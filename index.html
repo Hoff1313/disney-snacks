@@ -5,862 +5,757 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Disney World Snack Guide 2026 🏰</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --mk: #1a2e6b; --mk-grad: #2c48b0;
-      --ep: #007749; --ep-grad: #00a060;
-      --hs: #b0291f; --hs-grad: #d63c2e;
-      --ak: #5b3a29; --ak-grad: #7a5040;
-      --fav: #e05c91;
+      --mk: #1a2e6b; --mk2: #2c48b0;
+      --ep: #007749; --ep2: #00a060;
+      --hs: #b0291f; --hs2: #d63c2e;
+      --ak: #5b3a29; --ak2: #7a5040;
+      --fav: #c2185b;
       --bg: #faf8f4;
-      --radius: 18px;
-      --shadow: 0 2px 12px rgba(0,0,0,0.08);
-      --shadow-hover: 0 16px 44px rgba(0,0,0,0.14);
+      --r: 18px;
     }
     *{box-sizing:border-box;margin:0;padding:0;}
     body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#1c1c1c;min-height:100vh;}
 
-    /* ── HERO ── */
-    .hero{background:linear-gradient(140deg,#0d1b4b 0%,#1a3080 50%,#2c1654 100%);color:white;text-align:center;padding:68px 20px 88px;position:relative;overflow:hidden;}
-    .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='3' fill='%23ffffff' fill-opacity='0.04'/%3E%3C/svg%3E");}
-    .stars-wrap{position:absolute;inset:0;pointer-events:none;}
-    .star{position:absolute;background:white;border-radius:50%;animation:twinkle 2s infinite alternate;}
-    @keyframes twinkle{from{opacity:.12;transform:scale(1);}to{opacity:.85;transform:scale(1.5);}}
-    .hero-emoji{font-size:50px;display:block;margin-bottom:12px;}
-    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.1rem,6vw,4rem);font-weight:900;line-height:1.1;margin-bottom:12px;}
-    .hero-sub{font-size:1rem;opacity:.78;max-width:520px;margin:0 auto 14px;font-weight:300;}
-    .hero-badge{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:50px;padding:5px 16px;font-size:.82rem;margin-bottom:24px;backdrop-filter:blur(8px);}
+    /* ─ HERO ─ */
+    .hero{background:linear-gradient(140deg,#0d1b4b,#1a3080 55%,#2c1654);color:white;text-align:center;padding:66px 20px 86px;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='56' height='56' viewBox='0 0 56 56' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='28' cy='28' r='3' fill='%23fff' fill-opacity='.04'/%3E%3C/svg%3E");}
+    .stars{position:absolute;inset:0;pointer-events:none;}
+    .star{position:absolute;background:#fff;border-radius:50%;animation:tw 2s infinite alternate;}
+    @keyframes tw{from{opacity:.1;transform:scale(1);}to{opacity:.8;transform:scale(1.5);}}
+    .hero-icon{font-size:48px;display:block;margin-bottom:10px;}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:10px;}
+    .hero-sub{font-size:1rem;opacity:.78;max-width:500px;margin:0 auto 12px;font-weight:300;}
+    .badge{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);border-radius:50px;padding:5px 15px;font-size:.8rem;margin-bottom:22px;backdrop-filter:blur(8px);}
+    .nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+    .nav button{padding:9px 20px;border:2px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:white;border-radius:50px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:500;transition:all .2s;backdrop-filter:blur(8px);}
+    .nav button:hover,.nav button.active{background:white;color:#1a2e6b;border-color:white;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.25);}
+    .nav button.fav-btn.active{color:var(--fav);}
 
-    .park-nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
-    .park-nav button{padding:9px 20px;border:2px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:white;border-radius:50px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;transition:all .2s;backdrop-filter:blur(8px);}
-    .park-nav button:hover,.park-nav button.active{background:white;color:#1a2e6b;border-color:white;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.25);}
-    .park-nav button.fav-btn.active{color:var(--fav);}
+    /* ─ SEARCH ─ */
+    .search-wrap{max-width:500px;margin:-24px auto 0;position:relative;z-index:10;padding:0 20px;}
+    .search-wrap input{width:100%;padding:14px 48px;border-radius:50px;border:none;box-shadow:0 8px 28px rgba(0,0,0,.14);font-family:'DM Sans',sans-serif;font-size:.92rem;background:white;outline:none;color:#1c1c1c;}
+    .si{position:absolute;left:34px;top:50%;transform:translateY(-50%);pointer-events:none;}
+    .sc{position:absolute;right:34px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#bbb;font-size:.9rem;display:none;}
 
-    /* ── SEARCH ── */
-    .search-wrap{max-width:520px;margin:-26px auto 0;position:relative;z-index:10;padding:0 20px;}
-    .search-wrap input{width:100%;padding:15px 22px 15px 50px;border-radius:50px;border:none;box-shadow:0 8px 30px rgba(0,0,0,.15);font-family:'DM Sans',sans-serif;font-size:.95rem;background:white;outline:none;color:#1c1c1c;}
-    .search-icon{position:absolute;left:36px;top:50%;transform:translateY(-50%);font-size:1rem;pointer-events:none;}
-    .search-clear{position:absolute;right:36px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:1rem;color:#aaa;display:none;}
+    /* ─ ADD BUTTON ─ */
+    .add-fab{position:fixed;bottom:26px;right:26px;z-index:100;background:linear-gradient(135deg,#1a2e6b,#2c48b0);color:white;border:none;border-radius:50px;padding:13px 20px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;box-shadow:0 8px 24px rgba(26,46,107,.4);display:flex;align-items:center;gap:7px;transition:transform .2s,box-shadow .2s;}
+    .add-fab:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(26,46,107,.5);}
 
-    /* ── ADD SNACK BUTTON ── */
-    .add-btn{position:fixed;bottom:28px;right:28px;z-index:100;background:linear-gradient(135deg,#1a2e6b,#2c48b0);color:white;border:none;border-radius:50px;padding:14px 22px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;box-shadow:0 8px 24px rgba(26,46,107,.4);display:flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s;}
-    .add-btn:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(26,46,107,.5);}
+    /* ─ MODAL ─ */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+    .overlay.open{display:flex;animation:fi .2s ease;}
+    @keyframes fi{from{opacity:0;}to{opacity:1;}}
+    .modal{background:white;border-radius:24px;padding:30px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:su .25s ease;}
+    @keyframes su{from{transform:translateY(18px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+    .modal h2{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;margin-bottom:4px;}
+    .modal-sub{color:#999;font-size:.82rem;margin-bottom:22px;}
+    .modal-x{position:absolute;top:18px;right:18px;background:#f4f4f4;border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;}
+    .modal-x:hover{background:#eee;}
+    .fg{margin-bottom:14px;}
+    .fg label{display:block;font-size:.8rem;font-weight:600;color:#444;margin-bottom:4px;}
+    .fg input,.fg select,.fg textarea{width:100%;padding:9px 13px;border:1.5px solid #e4e4e4;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;background:#fafafa;transition:border-color .2s;outline:none;color:#1c1c1c;}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#1a2e6b;background:white;}
+    .fg textarea{height:78px;resize:vertical;}
+    .fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .img-preview{width:100%;height:130px;border-radius:10px;object-fit:cover;margin-top:7px;display:none;}
+    .modal-submit{width:100%;padding:12px;background:linear-gradient(135deg,#1a2e6b,#2c48b0);color:white;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;margin-top:4px;transition:opacity .2s;}
+    .modal-submit:hover{opacity:.9;}
 
-    /* ── MODAL ── */
-    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
-    .modal-overlay.open{display:flex;animation:fadeIn .2s ease;}
-    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-    .modal{background:white;border-radius:24px;padding:32px;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:slideUp .25s ease;}
-    @keyframes slideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-    .modal h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;margin-bottom:6px;}
-    .modal-sub{color:#888;font-size:.85rem;margin-bottom:24px;}
-    .modal-close{position:absolute;top:20px;right:20px;background:#f4f4f4;border:none;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background .2s;}
-    .modal-close:hover{background:#eee;}
-    .form-group{margin-bottom:16px;}
-    .form-group label{display:block;font-size:.82rem;font-weight:600;color:#444;margin-bottom:5px;}
-    .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 14px;border:1.5px solid #e4e4e4;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.9rem;background:#fafafa;transition:border-color .2s;outline:none;color:#1c1c1c;}
-    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:#1a2e6b;background:white;}
-    .form-group textarea{height:80px;resize:vertical;}
-    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-    .form-submit{width:100%;padding:13px;background:linear-gradient(135deg,#1a2e6b,#2c48b0);color:white;border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;margin-top:4px;transition:opacity .2s;}
-    .form-submit:hover{opacity:.9;}
-    .form-img-preview{width:100%;height:140px;border-radius:10px;object-fit:cover;margin-top:8px;display:none;background:#f0ece6;}
+    /* ─ MAIN ─ */
+    .main{max-width:1240px;margin:0 auto;padding:42px 20px 80px;}
+    .park-sec{margin-bottom:64px;display:none;}
+    .park-sec.on{display:block;animation:fu .3s ease;}
+    @keyframes fu{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 
-    /* ── MAIN ── */
-    .container{max-width:1240px;margin:0 auto;padding:44px 20px 80px;}
-    .park-section{margin-bottom:66px;display:none;}
-    .park-section.visible{display:block;animation:fadeUp .3s ease;}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+    .park-hdr{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding:24px 28px;border-radius:var(--r);position:relative;overflow:hidden;color:white;}
+    .park-hdr::after{content:attr(data-e);position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:5rem;opacity:.1;pointer-events:none;}
+    .mk .park-hdr{background:linear-gradient(135deg,var(--mk),var(--mk2));}
+    .ep .park-hdr{background:linear-gradient(135deg,var(--ep),var(--ep2));}
+    .hs .park-hdr{background:linear-gradient(135deg,var(--hs),var(--hs2));}
+    .ak .park-hdr{background:linear-gradient(135deg,var(--ak),var(--ak2));}
+    .fv .park-hdr{background:linear-gradient(135deg,#c2185b,#e91e8c);}
+    .park-hdr h2{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;}
+    .park-hdr p{opacity:.82;font-size:.88rem;margin-top:3px;}
+    .tally{display:inline-block;margin-top:8px;background:rgba(255,255,255,.18);border-radius:50px;padding:2px 11px;font-size:.74rem;font-weight:500;}
 
-    .park-header{display:flex;align-items:center;gap:18px;margin-bottom:26px;padding:26px 30px;border-radius:var(--radius);position:relative;overflow:hidden;color:white;}
-    .park-header::after{content:attr(data-emoji);position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:5rem;opacity:.1;pointer-events:none;}
-    .park-mk .park-header{background:linear-gradient(135deg,var(--mk),var(--mk-grad));}
-    .park-ep .park-header{background:linear-gradient(135deg,var(--ep),var(--ep-grad));}
-    .park-hs .park-header{background:linear-gradient(135deg,var(--hs),var(--hs-grad));}
-    .park-ak .park-header{background:linear-gradient(135deg,var(--ak),var(--ak-grad));}
-    .park-fav .park-header{background:linear-gradient(135deg,#c2185b,#e91e8c);}
-    .park-header-text h2{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:900;}
-    .park-header-text p{opacity:.82;font-size:.9rem;margin-top:4px;}
-    .park-tally{display:inline-block;margin-top:9px;background:rgba(255,255,255,.18);border-radius:50px;padding:2px 11px;font-size:.76rem;font-weight:500;}
+    /* ─ GRID ─ */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:20px;}
 
-    /* ── GRID ── */
-    .snacks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:20px;}
-    .snack-card{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
-    .snack-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);}
-    .snack-card.hidden{display:none!important;}
-    .snack-card.custom-card{outline:2px dashed #1a2e6b;outline-offset:-2px;}
+    .card{background:white;border-radius:var(--r);overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;}
+    .card:hover{transform:translateY(-6px);box-shadow:0 16px 44px rgba(0,0,0,.13);}
+    .card.gone{display:none!important;}
+    .card.custom{outline:2px dashed #8b5cf6;outline-offset:-2px;}
 
-    .img-wrap{position:relative;padding-top:60%;overflow:hidden;background:linear-gradient(135deg,#f0ece6,#e8e0d8);}
-    .img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .4s;}
-    .snack-card:hover .img-wrap img{transform:scale(1.06);}
+    /* ── SNACK VISUAL: emoji on gradient ── */
+    .vis{position:relative;height:170px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
+    /* Park-colored gradients */
+    .mk .vis{background:linear-gradient(135deg,#e8ecf9 0%,#c8d4f4 100%);}
+    .ep .vis{background:linear-gradient(135deg,#e0f4ec 0%,#b8e8d4 100%);}
+    .hs .vis{background:linear-gradient(135deg,#fdecea 0%,#f5c4c0 100%);}
+    .ak .vis{background:linear-gradient(135deg,#f5ede6 0%,#e8d4c4 100%);}
+    .fv .vis{background:linear-gradient(135deg,#fce4ec 0%,#f8bbd0 100%);}
+    .custom .vis{background:linear-gradient(135deg,#f3e8ff 0%,#ddd6fe 100%);}
+    /* Big emoji */
+    .vis-emoji{font-size:4.8rem;line-height:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.12));transition:transform .3s;}
+    .card:hover .vis-emoji{transform:scale(1.08) rotate(-3deg);}
+    /* Decorative dots pattern */
+    .vis::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.06) 1px,transparent 1px);background-size:18px 18px;pointer-events:none;}
+    /* When custom image is provided */
+    .vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
 
-    .snack-badge{position:absolute;top:11px;left:11px;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:50px;color:white;}
-    .park-mk .snack-badge,.fav-grid .snack-badge{background:var(--mk);}
-    .park-ep .snack-badge{background:var(--ep);}
-    .park-hs .snack-badge{background:var(--hs);}
-    .park-ak .snack-badge{background:var(--ak);}
-    .badge-new{background:#e67e22!important;}
-    .badge-custom{background:#6c3fc5!important;}
+    .badge-pill{position:absolute;top:10px;left:10px;z-index:2;font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:50px;color:white;}
+    .mk .badge-pill{background:var(--mk);}
+    .ep .badge-pill{background:var(--ep);}
+    .hs .badge-pill{background:var(--hs);}
+    .ak .badge-pill{background:var(--ak);}
+    .fv .badge-pill{background:var(--fav);}
+    .custom .badge-pill,.badge-custom{background:#7c3aed!important;}
+    .badge-new{background:#d97706!important;}
 
-    .snack-rank{position:absolute;bottom:11px;left:11px;background:rgba(255,255,255,.9);border-radius:50px;padding:2px 9px;font-size:.7rem;font-weight:700;color:#333;box-shadow:0 2px 8px rgba(0,0,0,.12);}
+    .rank-pill{position:absolute;bottom:10px;left:10px;z-index:2;background:rgba(255,255,255,.9);border-radius:50px;padding:2px 9px;font-size:.68rem;font-weight:700;color:#333;box-shadow:0 2px 8px rgba(0,0,0,.1);}
 
-    /* Fav button */
-    .fav-btn-card{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.88);border:none;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;box-shadow:0 2px 8px rgba(0,0,0,.12);}
-    .fav-btn-card:hover{background:white;transform:scale(1.15);}
-    .fav-btn-card.is-fav{background:#fce4ec;}
+    .fav-btn{position:absolute;top:9px;right:9px;z-index:2;background:rgba(255,255,255,.88);border:none;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.12);transition:transform .2s,background .15s;}
+    .fav-btn:hover{transform:scale(1.2);}
+    .fav-btn.loved{background:#fce4ec;}
 
-    .snack-body{padding:16px;flex:1;display:flex;flex-direction:column;}
-    .snack-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:9px;line-height:1.3;}
+    /* ─ CARD BODY ─ */
+    .body{padding:15px;flex:1;display:flex;flex-direction:column;}
+    .sname{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:8px;line-height:1.3;}
+    .where{background:#f7f4f0;border-radius:9px;padding:9px 11px;margin-bottom:8px;}
+    .wr{display:flex;gap:6px;align-items:flex-start;margin-bottom:4px;font-size:.77rem;}
+    .wr:last-child{margin-bottom:0;}
+    .wl{font-weight:600;color:#444;min-width:48px;flex-shrink:0;}
+    .wv{color:#555;line-height:1.4;}
+    .desc{font-size:.83rem;color:#555;line-height:1.65;flex:1;margin-bottom:11px;}
+    .foot{display:flex;align-items:center;gap:8px;margin-top:auto;}
+    .price{font-size:.76rem;font-weight:600;color:#333;background:#f0ede8;border-radius:50px;padding:3px 9px;white-space:nowrap;}
+    .link{flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:8px 12px;border-radius:50px;text-decoration:none;font-size:.79rem;font-weight:500;color:white;transition:opacity .2s;}
+    .link:hover{opacity:.85;}
+    .mk .link{background:var(--mk);}
+    .ep .link{background:var(--ep);}
+    .hs .link{background:var(--hs);}
+    .ak .link{background:var(--ak);}
+    .fv .link{background:var(--fav);}
 
-    .snack-where{background:#f7f4f0;border-radius:10px;padding:9px 11px;margin-bottom:9px;}
-    .where-row{display:flex;gap:7px;align-items:flex-start;margin-bottom:4px;font-size:.78rem;}
-    .where-row:last-child{margin-bottom:0;}
-    .where-label{font-weight:600;color:#444;min-width:50px;flex-shrink:0;}
-    .where-val{color:#555;line-height:1.4;}
+    /* fav grid uses park from data attr */
+    #grid-fav .card[data-park=mk] .link{background:var(--mk);}
+    #grid-fav .card[data-park=ep] .link{background:var(--ep);}
+    #grid-fav .card[data-park=hs] .link{background:var(--hs);}
+    #grid-fav .card[data-park=ak] .link{background:var(--ak);}
+    #grid-fav .card[data-park=mk] .badge-pill:not(.badge-new):not(.badge-custom){background:var(--mk);}
+    #grid-fav .card[data-park=ep] .badge-pill:not(.badge-new):not(.badge-custom){background:var(--ep);}
+    #grid-fav .card[data-park=hs] .badge-pill:not(.badge-new):not(.badge-custom){background:var(--hs);}
+    #grid-fav .card[data-park=ak] .badge-pill:not(.badge-new):not(.badge-custom){background:var(--ak);}
+    #grid-fav .card[data-park=mk] .vis{background:linear-gradient(135deg,#e8ecf9,#c8d4f4);}
+    #grid-fav .card[data-park=ep] .vis{background:linear-gradient(135deg,#e0f4ec,#b8e8d4);}
+    #grid-fav .card[data-park=hs] .vis{background:linear-gradient(135deg,#fdecea,#f5c4c0);}
+    #grid-fav .card[data-park=ak] .vis{background:linear-gradient(135deg,#f5ede6,#e8d4c4);}
 
-    .snack-desc{font-size:.83rem;color:#555;line-height:1.65;flex:1;margin-bottom:12px;}
-    .snack-footer{display:flex;align-items:center;gap:9px;margin-top:auto;}
-    .snack-price{font-size:.77rem;font-weight:600;color:#333;background:#f0ede8;border-radius:50px;padding:3px 9px;white-space:nowrap;}
-    .snack-link{flex:1;display:flex;align-items:center;justify-content:center;gap:4px;padding:8px 12px;border-radius:50px;text-decoration:none;font-size:.79rem;font-weight:500;color:white;transition:opacity .2s,transform .15s;}
-    .snack-link:hover{opacity:.85;transform:scale(.97);}
-    .park-mk .snack-link,.fav-grid .snack-link{background:var(--mk);}
-    .park-ep .snack-link{background:var(--ep);}
-    .park-hs .snack-link{background:var(--hs);}
-    .park-ak .snack-link{background:var(--ak);}
+    .empty{grid-column:1/-1;text-align:center;padding:56px 20px;color:#bbb;}
+    .empty div{font-size:2.5rem;margin-bottom:8px;}
+    .no-r{grid-column:1/-1;text-align:center;padding:40px 20px;color:#aaa;font-size:.92rem;}
 
-    /* fav section uses park color from data */
-    .fav-grid .snack-card[data-park="mk"] .snack-link{background:var(--mk);}
-    .fav-grid .snack-card[data-park="ep"] .snack-link{background:var(--ep);}
-    .fav-grid .snack-card[data-park="hs"] .snack-link{background:var(--hs);}
-    .fav-grid .snack-card[data-park="ak"] .snack-link{background:var(--ak);}
-    .fav-grid .snack-card[data-park="mk"] .snack-badge{background:var(--mk);}
-    .fav-grid .snack-card[data-park="ep"] .snack-badge{background:var(--ep);}
-    .fav-grid .snack-card[data-park="hs"] .snack-badge{background:var(--hs);}
-    .fav-grid .snack-card[data-park="ak"] .snack-badge{background:var(--ak);}
-
-    .empty-state{grid-column:1/-1;text-align:center;padding:60px 20px;color:#bbb;}
-    .empty-state p{font-size:1rem;margin-top:8px;}
-    .no-results{grid-column:1/-1;text-align:center;padding:50px 20px;color:#aaa;font-size:.95rem;}
-
-    /* ── TOAST ── */
-    .toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(20px);background:#1c1c1c;color:white;padding:10px 20px;border-radius:50px;font-size:.85rem;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;z-index:300;}
+    /* ─ TOAST ─ */
+    .toast{position:fixed;bottom:82px;left:50%;transform:translateX(-50%) translateY(16px);background:#1c1c1c;color:white;padding:9px 18px;border-radius:50px;font-size:.83rem;opacity:0;transition:all .28s;pointer-events:none;white-space:nowrap;z-index:300;}
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-    footer{text-align:center;padding:32px 20px;font-size:.79rem;color:#bbb;border-top:1px solid #eee;}
+    footer{text-align:center;padding:30px 20px;font-size:.78rem;color:#bbb;border-top:1px solid #eee;}
     footer a{color:#bbb;}
 
-    @media(max-width:640px){
-      .park-header{padding:18px;flex-direction:column;align-items:flex-start;gap:8px;}
-      .park-header::after{display:none;}
-      .park-header-text h2{font-size:1.4rem;}
-      .snacks-grid{grid-template-columns:1fr;}
-      .form-row{grid-template-columns:1fr;}
-      .add-btn{bottom:20px;right:20px;padding:12px 18px;}
+    @media(max-width:600px){
+      .park-hdr{padding:18px;flex-direction:column;align-items:flex-start;}
+      .park-hdr::after{display:none;}
+      .park-hdr h2{font-size:1.4rem;}
+      .grid{grid-template-columns:1fr;}
+      .fg-row{grid-template-columns:1fr;}
+      .add-fab{bottom:18px;right:18px;padding:11px 17px;}
     }
   </style>
 </head>
 <body>
 
-<!-- HERO -->
 <header class="hero">
-  <div class="stars-wrap" id="stars"></div>
-  <span class="hero-emoji">🏰</span>
+  <div class="stars" id="stars"></div>
+  <span class="hero-icon">🏰</span>
   <h1>Disney World Snack Guide</h1>
   <p class="hero-sub">The definitive 2026 guide to must-try bites across all four parks.</p>
-  <div class="hero-badge">✨ Updated for 2026 · New snacks highlighted · Favorites & custom lists</div><br>
-  <nav class="park-nav">
-    <button onclick="showPark('all')"  class="active" id="btn-all">✨ All Parks</button>
-    <button onclick="showPark('mk')"   id="btn-mk">🏰 Magic Kingdom</button>
-    <button onclick="showPark('ep')"   id="btn-ep">🌍 EPCOT</button>
-    <button onclick="showPark('hs')"   id="btn-hs">🎬 Hollywood Studios</button>
-    <button onclick="showPark('ak')"   id="btn-ak">🦁 Animal Kingdom</button>
-    <button onclick="showPark('fav')"  id="btn-fav" class="fav-btn">❤️ Favorites (<span id="fav-count">0</span>)</button>
+  <div class="badge">✨ Updated May 2026 · 63 Snacks · Favorites & Custom Lists</div><br>
+  <nav class="nav">
+    <button onclick="show('all')" class="active" id="btn-all">✨ All Parks</button>
+    <button onclick="show('mk')"  id="btn-mk">🏰 Magic Kingdom</button>
+    <button onclick="show('ep')"  id="btn-ep">🌍 EPCOT</button>
+    <button onclick="show('hs')"  id="btn-hs">🎬 Hollywood Studios</button>
+    <button onclick="show('ak')"  id="btn-ak">🦁 Animal Kingdom</button>
+    <button onclick="show('fav')" id="btn-fav" class="fav-btn">❤️ Favorites (<span id="fcount">0</span>)</button>
   </nav>
 </header>
 
-<!-- SEARCH -->
 <div class="search-wrap">
-  <span class="search-icon">🔍</span>
-  <input type="text" id="search" placeholder="Search by name, venue, or land…" oninput="filterSnacks(this.value)" />
-  <button class="search-clear" id="search-clear" onclick="clearSearch()">✕</button>
+  <span class="si">🔍</span>
+  <input id="search" type="text" placeholder="Search snacks, venues, or lands…" oninput="doSearch(this.value)" />
+  <button class="sc" id="sclear" onclick="clearSearch()">✕</button>
 </div>
 
-<!-- MAIN -->
-<main class="container">
+<main class="main">
 
-  <section class="park-section park-mk visible" id="section-mk">
-    <div class="park-header" data-emoji="🏰">
-      <div class="park-header-text">
-        <h2>🏰 Magic Kingdom</h2>
-        <p>Classic treats, fairy-tale flavors & Mickey-shaped everything</p>
-        <span class="park-tally" id="tally-mk"></span>
-      </div>
+  <section class="park-sec mk on" id="section-mk">
+    <div class="park-hdr" data-e="🏰">
+      <div><h2>🏰 Magic Kingdom</h2><p>Classic treats, fairy-tale flavors & Mickey-shaped everything</p><span class="tally" id="t-mk"></span></div>
     </div>
-    <div class="snacks-grid" id="grid-mk"></div>
+    <div class="grid" id="grid-mk"></div>
   </section>
 
-  <section class="park-section park-ep visible" id="section-ep">
-    <div class="park-header" data-emoji="🌍">
-      <div class="park-header-text">
-        <h2>🌍 EPCOT</h2>
-        <p>World Showcase flavors, festival bites & global culinary adventures</p>
-        <span class="park-tally" id="tally-ep"></span>
-      </div>
+  <section class="park-sec ep on" id="section-ep">
+    <div class="park-hdr" data-e="🌍">
+      <div><h2>🌍 EPCOT</h2><p>World Showcase flavors, festival bites & global culinary adventures</p><span class="tally" id="t-ep"></span></div>
     </div>
-    <div class="snacks-grid" id="grid-ep"></div>
+    <div class="grid" id="grid-ep"></div>
   </section>
 
-  <section class="park-section park-hs visible" id="section-hs">
-    <div class="park-header" data-emoji="🎬">
-      <div class="park-header-text">
-        <h2>🎬 Hollywood Studios</h2>
-        <p>Galaxy's Edge bites, Sci-Fi sips & Hollywood-sized treats</p>
-        <span class="park-tally" id="tally-hs"></span>
-      </div>
+  <section class="park-sec hs on" id="section-hs">
+    <div class="park-hdr" data-e="🎬">
+      <div><h2>🎬 Hollywood Studios</h2><p>Galaxy's Edge bites, Sci-Fi sips & Hollywood-sized treats</p><span class="tally" id="t-hs"></span></div>
     </div>
-    <div class="snacks-grid" id="grid-hs"></div>
+    <div class="grid" id="grid-hs"></div>
   </section>
 
-  <section class="park-section park-ak visible" id="section-ak">
-    <div class="park-header" data-emoji="🦁">
-      <div class="park-header-text">
-        <h2>🦁 Animal Kingdom</h2>
-        <p>Exotic tastes, Pandora specialties & open-air safari eats</p>
-        <span class="park-tally" id="tally-ak"></span>
-      </div>
+  <section class="park-sec ak on" id="section-ak">
+    <div class="park-hdr" data-e="🦁">
+      <div><h2>🦁 Animal Kingdom</h2><p>Exotic tastes, Pandora specialties & open-air safari eats</p><span class="tally" id="t-ak"></span></div>
     </div>
-    <div class="snacks-grid" id="grid-ak"></div>
+    <div class="grid" id="grid-ak"></div>
   </section>
 
-  <section class="park-section park-fav" id="section-fav">
-    <div class="park-header" data-emoji="❤️">
-      <div class="park-header-text">
-        <h2>❤️ My Favorites</h2>
-        <p>Your personal snack bucket list</p>
-        <span class="park-tally" id="tally-fav"></span>
-      </div>
+  <section class="park-sec fv" id="section-fav">
+    <div class="park-hdr" data-e="❤️">
+      <div><h2>❤️ My Favorites</h2><p>Your personal Disney snack bucket list</p><span class="tally" id="t-fav"></span></div>
     </div>
-    <div class="snacks-grid fav-grid" id="grid-fav"></div>
+    <div class="grid" id="grid-fav"></div>
   </section>
 
 </main>
 
 <footer>
-  <p>Updated May 2026 · New 2026 items labeled <span style="background:#e67e22;color:white;border-radius:50px;padding:1px 8px;font-size:.72rem;">NEW 2026</span> · Not affiliated with Walt Disney World®</p>
-  <p style="margin-top:6px"><a href="https://disneyworld.disney.go.com/dining/" target="_blank">disneyworld.disney.go.com/dining</a></p>
+  <p>Updated May 2026 · <span style="background:#d97706;color:white;border-radius:50px;padding:1px 8px;font-size:.7rem;">NEW 2026</span> items reflect this year's additions · Not affiliated with Walt Disney World®</p>
+  <p style="margin-top:5px"><a href="https://disneyworld.disney.go.com/dining/" target="_blank">disneyworld.disney.go.com/dining</a></p>
 </footer>
 
-<!-- ADD SNACK BUTTON -->
-<button class="add-btn" onclick="openModal()">
-  <span>＋</span> Add Snack
-</button>
+<button class="add-fab" onclick="openModal()">＋ Add Snack</button>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modal">
+<div class="overlay" id="overlay">
   <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <h2>Add a Snack</h2>
-    <p class="modal-sub">Found a hidden gem? Add it to the guide!</p>
-    <div class="form-group">
-      <label>Snack Name *</label>
-      <input type="text" id="f-name" placeholder="e.g. Nutella Waffle" />
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <h2>Add a Snack ✨</h2>
+    <p class="modal-sub">Found a hidden gem? Add it to your guide!</p>
+    <div class="fg-row">
+      <div class="fg">
+        <label>Snack Name *</label>
+        <input id="fn" placeholder="e.g. Nutella Waffle Sandwich" />
+      </div>
+      <div class="fg">
+        <label>Emoji</label>
+        <input id="fe" placeholder="e.g. 🧇" maxlength="2" />
+      </div>
     </div>
-    <div class="form-row">
-      <div class="form-group">
+    <div class="fg-row">
+      <div class="fg">
         <label>Park *</label>
-        <select id="f-park">
+        <select id="fp">
           <option value="mk">🏰 Magic Kingdom</option>
           <option value="ep">🌍 EPCOT</option>
           <option value="hs">🎬 Hollywood Studios</option>
           <option value="ak">🦁 Animal Kingdom</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="fg">
         <label>Price</label>
-        <input type="text" id="f-price" placeholder="e.g. ~$7" />
+        <input id="fpr" placeholder="~$7" />
       </div>
     </div>
-    <div class="form-group">
+    <div class="fg">
       <label>Venue / Restaurant *</label>
-      <input type="text" id="f-venue" placeholder="e.g. Aloha Isle" />
+      <input id="fv" placeholder="e.g. Aloha Isle" />
     </div>
-    <div class="form-group">
+    <div class="fg">
       <label>Land / Area *</label>
-      <input type="text" id="f-land" placeholder="e.g. Adventureland" />
+      <input id="fl" placeholder="e.g. Adventureland" />
     </div>
-    <div class="form-group">
+    <div class="fg">
       <label>Insider Tip</label>
-      <input type="text" id="f-tip" placeholder="Best time to visit, what to pair it with…" />
+      <input id="ft" placeholder="Best time to go, what to pair it with…" />
     </div>
-    <div class="form-group">
+    <div class="fg">
       <label>Description *</label>
-      <textarea id="f-desc" placeholder="What does it taste like? Why is it worth trying?"></textarea>
+      <textarea id="fd" placeholder="What does it taste like? Why is it worth trying?"></textarea>
     </div>
-    <div class="form-group">
-      <label>Image URL <span style="color:#aaa;font-weight:400">(optional)</span></label>
-      <input type="url" id="f-img" placeholder="https://…" oninput="previewImg(this.value)" />
-      <img id="f-img-preview" class="form-img-preview" alt="Preview" />
+    <div class="fg">
+      <label>Image URL <span style="color:#bbb;font-weight:400">(optional — leave blank for emoji display)</span></label>
+      <input id="fi" type="url" placeholder="https://…" oninput="prevImg(this.value)" />
+      <img id="fprev" class="img-preview" alt="Preview" />
     </div>
-    <div class="form-group">
-      <label>Disney Dining Link <span style="color:#aaa;font-weight:400">(optional)</span></label>
-      <input type="url" id="f-link" placeholder="https://disneyworld.disney.go.com/dining/…" />
+    <div class="fg">
+      <label>Disney Dining Link <span style="color:#bbb;font-weight:400">(optional)</span></label>
+      <input id="flink" type="url" placeholder="https://disneyworld.disney.go.com/dining/…" />
     </div>
-    <button class="form-submit" onclick="submitSnack()">Add to Guide ✨</button>
+    <button class="modal-submit" onclick="submitSnack()">Add to Guide ✨</button>
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ── IMAGE FALLBACKS ──────────────────────────────────────────────────────────
-const FALLBACKS = [
-  "https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80",
-  "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80",
-  "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80",
-  "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80",
-  "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80",
-];
-let fbIdx = 0;
-function onImgError(el){el.onerror=null;el.src=FALLBACKS[fbIdx++%FALLBACKS.length];}
+// ── STATE ────────────────────────────────────────────────────────────────────
+let favs    = JSON.parse(localStorage.getItem('dw26-favs')    || '[]');
+let customs = JSON.parse(localStorage.getItem('dw26-custom')  || '[]');
 
-// ── STATE ─────────────────────────────────────────────────────────────────────
-let favorites = JSON.parse(localStorage.getItem('dwsg-favs') || '[]');
-let customSnacks = JSON.parse(localStorage.getItem('dwsg-custom') || '[]');
-
-function saveFavs(){localStorage.setItem('dwsg-favs',JSON.stringify(favorites));}
-function saveCustom(){localStorage.setItem('dwsg-custom',JSON.stringify(customSnacks));}
-
-// ── SNACK DATA ───────────────────────────────────────────────────────────────
-const SNACKS = {
+// ── DATA ─────────────────────────────────────────────────────────────────────
+const DATA = {
   mk: [
-    {id:'mk1', name:"Dole Whip", emoji:"🍍", tag:"Fan Favorite",
-     where:{venue:"Aloha Isle",land:"Adventureland",tip:"Near the Enchanted Tiki Room. Lines shortest early morning or near park close. Mobile order now available!"},
-     desc:"Disney's most iconic treat — a smooth, dairy-free pineapple soft-serve. Get it in a cone, a cup, or as a float in chilled pineapple juice. Seasonal swirls like mango and raspberry pop up throughout the year.",
-     price:"~$5–$8", img:"https://images.unsplash.com/photo-1567206563114-c179706a56c6?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/aloha-isle/"},
-    {id:'mk2', name:"Mickey Premium Ice Cream Bar", emoji:"🍫", tag:"Classic",
-     where:{venue:"The Plaza Ice Cream Parlor & roaming carts",land:"Main Street, U.S.A.",tip:"White carts scattered throughout the park. The Plaza Parlor has the most variety and shaded seating nearby."},
-     desc:"Creamy vanilla ice cream hand-dipped in a cracking chocolate shell, shaped like Mickey's iconic silhouette. A timeless Disney rite of passage for every age.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/the-plaza-ice-cream-parlor/"},
-    {id:'mk3', name:"Gaston's Giant Cinnamon Roll", emoji:"🌀", tag:"Must-Try",
-     where:{venue:"Gaston's Tavern",land:"Fantasyland",tip:"Arrive early — they genuinely sell out before noon on busy days. Pro tip: ask for extra icing, they'll almost always oblige!"},
-     desc:"An enormous, pillowy cinnamon roll slathered in cream cheese frosting — practically the size of your head. Warm, gooey, and completely worth every calorie. The definitive Fantasyland snack.",
-     price:"~$7", img:"https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/gastons-tavern/"},
-    {id:'mk4', name:"LeFou's Brew", emoji:"🍺", tag:"Unique",
-     where:{venue:"Gaston's Tavern",land:"Fantasyland",tip:"Pair it with the cinnamon roll for the ultimate Fantasyland combo. Sit inside the tavern — it's beautifully themed with Gaston's portrait and oversized chair."},
-     desc:"A frozen apple juice and toasted marshmallow slushy topped with a passionfruit-mango foam that slowly drips in. Non-alcoholic, refreshing, and completely unique to Magic Kingdom.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1546171753-97d7676e4602?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/gastons-tavern/"},
-    {id:'mk5', name:"Corn Dog Nuggets", emoji:"🌭", tag:"Savory",
-     where:{venue:"Casey's Corner",land:"Main Street, U.S.A.",tip:"Casey's sits at the hub end of Main Street facing the castle — great views while you eat. Often has shorter lines than other quick-service spots nearby."},
-     desc:"Bite-sized all-beef hot dog chunks wrapped in golden cornbread batter and perfectly fried. Crispy outside, juicy inside — salty, satisfying, and almost impossible to stop eating.",
-     price:"~$9", img:"https://images.unsplash.com/photo-1619881590745-c7b0e79e0dc3?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/caseys-corner/"},
-    {id:'mk6', name:"Turkey Leg", emoji:"🍗", tag:"Iconic",
-     where:{venue:"Frontierland Wagon & Liberty Square Market",land:"Frontierland / Liberty Square",tip:"Follow the smoky aroma — the cart near the Frontierland bridge is usually the first one you'll spot. A legendary Disney photo op."},
-     desc:"A massive smoked-and-seasoned turkey leg with a gorgeous bark and deep smoke ring. A Disney institution since the '90s and one of the most photographed foods across the parks.",
-     price:"~$14", img:"https://images.unsplash.com/photo-1598103442097-8b74394b95c3?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/liberty-square-market/"},
-    {id:'mk7', name:"Mickey Pretzel", emoji:"🥨", tag:"Classic",
-     where:{venue:"Pretzel & snack carts throughout",land:"Multiple Locations",tip:"Always ask for the warm cheese dipping sauce — it's not always on display but almost always available. Best near Fantasyland carts."},
-     desc:"A warm, soft Mickey-shaped pretzel dusted with coarse salt. Chewy, satisfying, and best eaten fresh from the cart with warm cheddar dipping sauce on the side.",
-     price:"~$7", img:"https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/"},
-    {id:'mk8', name:"Churro", emoji:"🍬", tag:"Sweet",
-     where:{venue:"Snack carts in Adventureland & Fantasyland",land:"Multiple Locations",tip:"Follow the cinnamon-sugar scent. Seasonal dipping sauces (chocolate, caramel, strawberry) rotate — ask the cart attendant what's currently available."},
-     desc:"Crispy fried dough rolled in cinnamon sugar with a soft, doughy center. Fresh, hot, and served with seasonal dipping sauces — a deceptively simple treat done perfectly.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1613564834361-9436948817d1?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/"},
-    {id:'mk9', name:"Loaded Waffles", emoji:"🧇", tag:"Must-Try",
-     where:{venue:"Sleepy Hollow Refreshments",land:"Liberty Square (near the Haunted Mansion bridge)",tip:"A beloved stand that's often overlooked. The Nutella-fruit waffle is perfect for breakfast; the sweet-and-spicy chicken waffle is an incredible savory lunch option."},
-     desc:"Golden, crispy-edged waffles with pillowy interiors loaded with your choice of toppings: Nutella with fresh strawberries and powdered sugar, or savory fried sweet-and-spicy chicken. Both are absolutely legendary.",
-     price:"~$8–$10", img:"https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/sleepy-hollow/"},
-    {id:'mk10', name:"Mickey Maple Bacon Cinnamon Roll", emoji:"🥓", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"Westward Ho Refreshments",land:"Frontierland",tip:"Grab it early in the day — this decadent pastry sells out fast! Located near the Big Thunder Mountain area. It's big enough to share… but you won't want to."},
-     desc:"A Mickey-shaped cinnamon roll drizzled in maple icing and topped with crispy bacon crumbles — hitting every flavor note at once: sweet, savory, sticky, and salty. One of the most talked-about new items in Magic Kingdom for 2026.",
-     price:"~$8", img:"https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/westward-ho-refreshments/"},
-    {id:'mk11', name:"Black Garlic Truffle Parmesan Fries", emoji:"🍟", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"Cosmic Ray's Starlight Café & Pinocchio Village Haus",land:"Tomorrowland / Fantasyland",tip:"Available at multiple quick-service spots. When loaded with the full drizzle of truffle aioli and Parmesan, these are extraordinary. The amount of topping can vary — don't be shy about asking for more!"},
-     desc:"Hot, crispy fries drenched in black garlic truffle aioli and finished with a generous sprinkle of grated Parmesan. A bougie, elevated option that has quickly become a reader favorite for 2026.",
-     price:"~$8", img:"https://images.unsplash.com/photo-1576107232684-1279f98f0159?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/cosmic-rays-starlight-cafe/"},
-    {id:'mk12', name:"Hushpuppies at Columbia Harbour House", emoji:"🌽", tag:"Hidden Gem",
-     where:{venue:"Columbia Harbour House",land:"Liberty Square",tip:"Head upstairs for a quieter, water-view table. Pair the hushpuppies with honey mustard — a combination that readers call one of the best budget-friendly snacks in the park."},
-     desc:"Crispy, golden-fried cornmeal hushpuppies with a fluffy interior — a comforting Southern classic that's perfectly at home in Liberty Square. Budget-friendly, filling, and deeply satisfying.",
-     price:"~$5", img:"https://images.unsplash.com/photo-1619881590745-c7b0e79e0dc3?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/columbia-harbour-house/"},
-    {id:'mk13', name:"Toffee Apple", emoji:"🍎", tag:"Handcrafted",
-     where:{venue:"The Confectionery",land:"Main Street, U.S.A.",tip:"Watch through the candy shop windows as cast members craft these daily. Opens with the park — morning is best for freshest stock and widest topping selection."},
-     desc:"A crisp Granny Smith apple coated in house-made caramel toffee and rolled in your choice of toppings: chopped pecans, dark chocolate drizzle, sprinkles, or a mix. Made fresh in-store every morning.",
-     price:"~$10", img:"https://images.unsplash.com/photo-1570526548127-a3f1c93e1c25?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/the-confectionery/"},
-    {id:'mk14', name:"Cheshire Cat Tail", emoji:"🐱", tag:"Hidden Gem",
-     where:{venue:"Storybook Treats",land:"Fantasyland (near Mad Tea Party)",tip:"This small ice cream window near the teacups is missed by most guests. A wonderful low-key snack stop without a long wait."},
-     desc:"A pink and purple striped cream puff filled with light vanilla mousse and dusted with powdered sugar. Whimsical, airy, and beautifully themed after Alice in Wonderland's Cheshire Cat.",
-     price:"~$5", img:"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/storybook-treats/"},
-    {id:'mk15', name:"Dole Whip Float", emoji:"🍹", tag:"Fan Favorite",
-     where:{venue:"Aloha Isle",land:"Adventureland",tip:"Ask specifically for the float upgrade — worth every penny. The chilled pineapple juice base adds tartness that perfectly balances the sweet soft-serve."},
-     desc:"Pineapple Dole Whip soft-serve floating in chilled pineapple juice. Tart, creamy, endlessly refreshing, and one of the most photographed items in all of Walt Disney World.",
-     price:"~$7", img:"https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/aloha-isle/"},
-    {id:'mk16', name:"Main Street Croissant Donut", emoji:"🥐", tag:"Breakfast",
-     where:{venue:"Main Street Bakery (Starbucks)",land:"Main Street, U.S.A.",tip:"Right at the park entrance. Perfect first stop — grab coffee and a pastry before the morning rush begins. Seasonal filling flavors change throughout the year."},
-     desc:"A buttery, laminated croissant-donut hybrid filled with seasonal cream and glazed with house-made icing. Pairs perfectly with a Starbucks latte from the same counter.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/magic-kingdom/main-street-bakery/"},
+    {id:'mk01',e:'🍍',name:'Dole Whip',tag:'Fan Favorite',
+     w:{v:'Aloha Isle',l:'Adventureland',t:'Near the Enchanted Tiki Room. Shortest lines early morning or near close. Mobile ordering now available!'},
+     d:"Disney's most iconic treat — smooth, dairy-free pineapple soft-serve. Get it in a cone, cup, or as a float in chilled pineapple juice. Seasonal swirls like mango and raspberry appear throughout the year.",
+     p:'~$5–$8',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/aloha-isle/'},
+    {id:'mk02',e:'🍫',name:'Mickey Premium Ice Cream Bar',tag:'Classic',
+     w:{v:'The Plaza Ice Cream Parlor & roaming carts',l:'Main Street, U.S.A.',t:'White carts scattered all over the park. The Plaza Parlor near the castle has the most flavors and shaded seating nearby.'},
+     d:"Creamy vanilla ice cream dipped in a cracking chocolate shell, shaped like Mickey's iconic three-circle silhouette. A timeless Disney rite of passage no visit should skip.",
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/the-plaza-ice-cream-parlor/'},
+    {id:'mk03',e:'🌀',name:"Gaston's Giant Cinnamon Roll",tag:'Must-Try',
+     w:{v:"Gaston's Tavern",l:'Fantasyland',t:'Arrive early — they genuinely sell out before noon on busy days. Ask the cast member for extra icing; they almost always say yes!'},
+     d:"An enormous, pillowy cinnamon roll slathered in cream cheese frosting — practically the size of your head. Warm, gooey, and completely worth every calorie. The definitive Fantasyland snack.",
+     p:'~$7',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/gastons-tavern/'},
+    {id:'mk04',e:'🍏',name:"LeFou's Brew",tag:'Unique',
+     w:{v:"Gaston's Tavern",l:'Fantasyland',t:"Pair it with the cinnamon roll for the ultimate Fantasyland combo. Sit inside the tavern — it's gorgeous and themed with Gaston's portrait and oversized chair."},
+     d:'A frozen apple juice and toasted marshmallow slushy topped with a passionfruit-mango foam that slowly drips in. Non-alcoholic, refreshing, and completely unique to Magic Kingdom.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/gastons-tavern/'},
+    {id:'mk05',e:'🌭',name:'Corn Dog Nuggets',tag:'Savory',
+     w:{v:"Casey's Corner",l:'Main Street, U.S.A.',t:"Casey's sits at the hub end of Main Street facing the castle — great views while you eat. Often shorter lines than nearby spots."},
+     d:'Bite-sized all-beef hot dog chunks wrapped in golden cornbread batter and fried to perfection. Crispy outside, juicy inside — salty, satisfying, and nearly impossible to stop eating.',
+     p:'~$9',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/caseys-corner/'},
+    {id:'mk06',e:'🍗',name:'Turkey Leg',tag:'Iconic',
+     w:{v:'Frontierland Wagon & Liberty Square Market',l:'Frontierland / Liberty Square',t:'Follow the smoky aroma — the cart near the Frontierland bridge is easiest to spot. A legendary Disney photo op since the 1990s.'},
+     d:'A massive smoked-and-seasoned turkey leg with a gorgeous bark and deep smoke ring. A Disney institution for decades and one of the most photographed foods in any theme park.',
+     p:'~$14',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/liberty-square-market/'},
+    {id:'mk07',e:'🥨',name:'Mickey Pretzel',tag:'Classic',
+     w:{v:'Pretzel & snack carts throughout',l:'Multiple Locations',t:'Always ask for the warm cheddar dipping sauce — not always on display but almost always available. Best near Fantasyland carts.'},
+     d:'A warm, soft Mickey-shaped pretzel dusted with coarse salt. Chewy, satisfying, and best eaten fresh from the cart with warm cheese dipping sauce on the side.',
+     p:'~$7',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/'},
+    {id:'mk08',e:'🍬',name:'Churro',tag:'Sweet',
+     w:{v:'Snack carts in Adventureland & Fantasyland',l:'Multiple Locations',t:'Follow the cinnamon-sugar scent. Seasonal dipping sauces (chocolate, caramel, strawberry) rotate throughout the year — ask what is available.'},
+     d:'Crispy fried dough rolled in cinnamon sugar with a soft, doughy center. Fresh, hot, and served with seasonal dipping sauces — a deceptively simple treat done perfectly.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/'},
+    {id:'mk09',e:'🧇',name:'Loaded Waffles',tag:'Must-Try',
+     w:{v:'Sleepy Hollow Refreshments',l:'Liberty Square (near Haunted Mansion bridge)',t:"A beloved stand often overlooked by guests. The Nutella-fruit waffle is perfect for breakfast; the sweet-and-spicy chicken waffle is an incredible savory lunch. Don't skip this one."},
+     d:"Golden, crispy-edged waffles loaded with Nutella and fresh strawberries OR savory sweet-and-spicy fried chicken. Both versions are genuinely legendary. One of Magic Kingdom's most underrated snacks.",
+     p:'~$8–$10',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/sleepy-hollow/'},
+    {id:'mk10',e:'🥓',name:'Mickey Maple Bacon Cinnamon Roll',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:'Westward Ho Refreshments',l:'Frontierland',t:'Grab it early — sells out fast! Located near Big Thunder Mountain. It is genuinely big enough to share, but you probably will not want to.'},
+     d:'A Mickey-shaped cinnamon roll drizzled in maple icing and topped with crispy bacon crumbles. Sweet, savory, sticky, and salty all at once — one of the most talked-about new items at Magic Kingdom in 2026.',
+     p:'~$8',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/westward-ho-refreshments/'},
+    {id:'mk11',e:'🍟',name:'Black Garlic Truffle Parmesan Fries',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:"Cosmic Ray's Starlight Café & Pinocchio Village Haus",l:'Tomorrowland / Fantasyland',t:'Available at multiple quick-service spots. When fully loaded with truffle aioli and Parmesan, these are extraordinary — do not hesitate to ask for extra topping.'},
+     d:"Hot, crispy fries drenched in black garlic truffle aioli and finished with grated Parmesan. A bougie, elevated option that has quickly become a reader favorite for 2026 — one of Magic Kingdom's most talked-about new additions.",
+     p:'~$8',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/cosmic-rays-starlight-cafe/'},
+    {id:'mk12',e:'🌽',name:'Hushpuppies',tag:'Hidden Gem',
+     w:{v:'Columbia Harbour House',l:'Liberty Square',t:'Head upstairs for a quiet, water-view table. Pair with honey mustard — one of the best budget-friendly snacks in the park according to repeat visitors.'},
+     d:"Crispy, golden-fried cornmeal hushpuppies with a fluffy interior. A comforting Southern classic that's perfectly at home in Liberty Square. Budget-friendly, filling, and deeply satisfying.",
+     p:'~$5',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/columbia-harbour-house/'},
+    {id:'mk13',e:'🍎',name:'Toffee Apple',tag:'Handcrafted',
+     w:{v:'The Confectionery',l:'Main Street, U.S.A.',t:'Watch cast members craft these through the candy shop windows. Opens with the park — morning is best for freshest stock and widest topping choice.'},
+     d:'A crisp Granny Smith apple coated in house-made caramel toffee and rolled in toppings: chopped pecans, dark chocolate drizzle, or sprinkles. Made fresh daily right in the store.',
+     p:'~$10',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/the-confectionery/'},
+    {id:'mk14',e:'🐱',name:'Cheshire Cat Tail',tag:'Hidden Gem',
+     w:{v:'Storybook Treats',l:'Fantasyland (near Mad Tea Party)',t:'This small ice cream window near the teacups is missed by most guests — a wonderful low-key snack stop with almost no wait.'},
+     d:'A pink and purple striped cream puff filled with light vanilla mousse and dusted with powdered sugar. Whimsical, airy, and beautifully themed after the Cheshire Cat from Alice in Wonderland.',
+     p:'~$5',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/storybook-treats/'},
+    {id:'mk15',e:'🥐',name:'Main Street Croissant Donut',tag:'Breakfast',
+     w:{v:'Main Street Bakery (Starbucks)',l:'Main Street, U.S.A.',t:'Right at the park entrance — perfect first stop. Grab coffee and a pastry before the morning rush. Seasonal filling flavors change throughout the year.'},
+     d:'A buttery, laminated croissant-donut hybrid filled with seasonal cream and glazed with house-made icing. Pairs perfectly with a Starbucks latte from the same counter.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/main-street-bakery/'},
+    {id:'mk16',e:'🍹',name:'Dole Whip Float',tag:'Fan Favorite',
+     w:{v:'Aloha Isle',l:'Adventureland',t:'Ask specifically for the float upgrade — well worth it. The chilled pineapple juice base adds tartness that perfectly balances the sweet soft-serve.'},
+     d:'Pineapple Dole Whip soft-serve floating in chilled pineapple juice. Tart, creamy, endlessly refreshing, and one of the most photographed items in all of Walt Disney World.',
+     p:'~$7',link:'https://disneyworld.disney.go.com/dining/magic-kingdom/aloha-isle/'},
   ],
 
   ep: [
-    {id:'ep1', name:"School Bread", emoji:"🍞", tag:"World Showcase",
-     where:{venue:"Kringla Bakeri og Kafé",land:"Norway Pavilion, World Showcase",tip:"Norway is on the left side of the World Showcase loop. The bakery is right by the Frozen Ever After queue — you'll smell the cardamom before you see it."},
-     desc:"A Norwegian cardamom sweet bun filled with vanilla custard cream, topped with pearl sugar and shredded coconut. Soft, subtly floral, and one of EPCOT's most beloved snacks. A World Showcase institution.",
-     price:"~$5.49", img:"https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/kringla-bakeri-og-kafe/"},
-    {id:'ep2', name:"School Bread Cold Brew", emoji:"☕", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"Kringla Bakeri og Kafé",land:"Norway Pavilion, World Showcase",tip:"Order both the School Bread and Cold Brew together — they were designed as a pairing and the combination is exceptional. One of 2026's best new EPCOT combos."},
-     desc:"A sweet, creamy cold brew coffee drink that perfectly complements the School Bread. New for 2026, this cardamom-kissed iced coffee has already developed a cult following among repeat EPCOT visitors.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/kringla-bakeri-og-kafe/"},
-    {id:'ep3', name:"Cheeseburger Spring Rolls", emoji:"🥟", tag:"Cult Classic",
-     where:{venue:"Joy of Tea kiosk",land:"China Pavilion, World Showcase",tip:"On the water's edge inside the China Pavilion courtyard. One of EPCOT's most talked-about and photogenic cult snacks — a genuine must-try."},
-     desc:"Crispy spring roll wrappers packed with seasoned beef and melted cheddar — an absurd mashup that has developed a fierce fanbase. Golden, crunchy, and surprisingly, perfectly delicious.",
-     price:"~$8", img:"https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/joy-of-tea/"},
-    {id:'ep4', name:"Giant Savory Crêpe", emoji:"🥞", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"Crêpes À Emporter by La Crêperie de Paris",land:"France Pavilion, World Showcase",tip:"New for 2026! Located near La Crêperie de Paris. The gigantic size means this is practically a meal. Get there early as quantities are limited each day."},
-     desc:"A massive galette-style savory crepe stuffed with cheese, mushrooms, ham, and arugula — the cheese baked onto the top is the star of the show. So filling it easily qualifies as a meal. One of 2026's most exciting new EPCOT items.",
-     price:"~$14", img:"https://images.unsplash.com/photo-1528736235302-52922df5c122?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/la-creperie-de-paris/"},
-    {id:'ep5', name:"Butter Croissant", emoji:"🥐", tag:"France",
-     where:{venue:"Les Halles Boulangerie-Pâtisserie",land:"France Pavilion, World Showcase",tip:"Arrive when World Showcase opens (11 AM) for the best selection before popular items sell out. Also try the pain au chocolat and almond croissant."},
-     desc:"An authentically made French butter croissant — shatteringly flaky outside, airy and buttery within. The France pavilion bakery consistently serves some of the best pastries in any theme park anywhere.",
-     price:"~$5", img:"https://images.unsplash.com/photo-1481391319555-9856ebb3d203?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/les-halles-boulangerie-patisserie/"},
-    {id:'ep6', name:"Croissant aux Amandes", emoji:"🌰", tag:"France",
-     where:{venue:"Les Halles Boulangerie-Pâtisserie",land:"France Pavilion, World Showcase",tip:"Best enjoyed alongside a café au lait from the same counter. Denser and more filling than the plain croissant — worth the extra dollar."},
-     desc:"A twice-baked croissant stuffed with rich almond frangipane cream, topped with toasted sliced almonds and powdered sugar. Dense, fragrant, nutty, and absolutely magnificent.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/les-halles-boulangerie-patisserie/"},
-    {id:'ep7', name:"Karamell-Küche Cookie Sandwich", emoji:"🍪", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"Karamell-Küche",land:"Germany Pavilion, World Showcase",tip:"The Germany Pavilion shop has rotating seasonal cookie sandwich flavors — snickerdoodle, gingerbread, and carrot cake versions have appeared. Ask what's currently available."},
-     desc:"Seasonal caramel cookie sandwiches with a salted caramel buttercream that steals the show every time. Karamell-Küche is one of EPCOT's most addictive shops — the warm caramel aroma is intoxicating.",
-     price:"~$7", img:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/karamell-kuche/"},
-    {id:'ep8', name:"Kakamora Float", emoji:"🥥", tag:"Limited",
-     where:{venue:"Refreshment Port",land:"Near Canada Pavilion, World Showcase",tip:"Look for the Moana-themed kiosk near the Canada pavilion. A great photo opportunity — the garnish is a tiny Kakamora coconut pirate character!"},
-     desc:"A Moana-inspired frozen float: pineapple soft-serve over a blue raspberry-citrus punch base, topped with a Kakamora garnish. Playful, tropical, and a uniquely EPCOT experience.",
-     price:"~$7", img:"https://images.unsplash.com/photo-1622485831141-5c0d9f8f0e94?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/refreshment-port/"},
-    {id:'ep9', name:"Artisan Gelato", emoji:"🍨", tag:"France",
-     where:{venue:"L'Artisan des Glaces",land:"France Pavilion, World Showcase",tip:"Tiny shop easy to walk past. Ask about flavors not listed on the board. The macaron ice cream sandwich is a showstopper — two macarons flanking a scoop of rosé gelato."},
-     desc:"Handcrafted Italian-French gelato in rotating seasonal flavors. The macaron ice cream sandwich (two macarons with gelato) is one of EPCOT's most spectacular desserts.",
-     price:"~$7–$9", img:"https://images.unsplash.com/photo-1567337710282-00832b415979?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/lartisan-des-glaces/"},
-    {id:'ep10', name:"Baklava", emoji:"🍯", tag:"Morocco",
-     where:{venue:"Tangierine Café",land:"Morocco Pavilion, World Showcase",tip:"Morocco is on the far right of World Showcase, between France and Japan. Tangierine Café serves fresh baklava all day at a walk-up counter — no wait required."},
-     desc:"Layers of flaky phyllo filled with crushed pistachios and walnuts, soaked in honey and rose water. Sticky, aromatic, and as authentic as you'll find outside Morocco itself.",
-     price:"~$5", img:"https://images.unsplash.com/photo-1519676867240-f03562e64548?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/tangierine-cafe/"},
-    {id:'ep11', name:"German Pretzel Bread", emoji:"🥖", tag:"Germany",
-     where:{venue:"Sommerfest",land:"Germany Pavilion, World Showcase",tip:"Sommerfest is a walk-up window in the Germany courtyard. Order a pretzel roll and a Märzen from the beer garden counter next door — a perfect World Showcase pairing."},
-     desc:"A soft, chewy pretzel bread roll with a glossy dark crust and a generous coating of coarse salt. Baked fresh daily and served with the house whole-grain mustard. Simple, honest, wonderful.",
-     price:"~$5", img:"https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/sommerfest/"},
-    {id:'ep12', name:"Kaki Gori Shaved Ice", emoji:"🧊", tag:"Japan",
-     where:{venue:"Kabuki Café",land:"Japan Pavilion, World Showcase",tip:"The Kabuki Café kiosk is in the Japan Pavilion courtyard. Flavors change seasonally — lemon yuzu and mango are standout options worth asking about."},
-     desc:"Ultra-fine shaved ice flavored with mango, cherry blossom, or lemon yuzu syrup. Lighter and fluffier than American snow cones, with a melt-on-your-tongue texture that's wonderfully refreshing.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/kabuki-cafe/"},
-    {id:'ep13', name:"Fiesta Nachos", emoji:"🌮", tag:"Mexico",
-     where:{venue:"La Cantina de San Angel",land:"Mexico Pavilion, World Showcase",tip:"Outdoor seating directly on the World Showcase Lagoon — prime real estate for the Harmonious nighttime show. Arrive early for a lagoon-side table."},
-     desc:"Tortilla chips piled high with seasoned beef, house queso, pico de gallo, pickled jalapeños, and sour cream. Shareable, messy, and one of the most satisfying savory snacks in all of EPCOT.",
-     price:"~$12", img:"https://images.unsplash.com/photo-1573225342350-16731dd9bf3d?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/la-cantina-de-san-angel/"},
-    {id:'ep14', name:"Maple Popcorn", emoji:"🍿", tag:"Canada",
-     where:{venue:"Popcorn cart near Canada Pavilion",land:"Canada Pavilion, World Showcase",tip:"Easy to spot by the maple leaf theming. A sweet-salty-buttery addictive combo — grab a big bucket for snacking during the Harmonious show."},
-     desc:"Freshly popped corn tossed in a real Canadian maple syrup glaze. Sweet, buttery, lightly salty — a deceptively simple snack that always draws a crowd of repeat visitors.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1578849278619-7281f0a23f96?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/"},
-    {id:'ep15', name:"Lobster Roll", emoji:"🦞", tag:"Splurge",
-     where:{venue:"Festival booths & seasonal venues near American Adventure",land:"American Adventure Pavilion area",tip:"Check the EPCOT festival calendar — lobster rolls frequently appear in elevated forms at Food & Wine and Flower & Garden booths."},
-     desc:"Tender chunks of sweet lobster in a lemon-mayo dressing in a warm, butter-toasted split-top bun. A proper New England lobster roll inside a theme park is a genuinely special and rare thing.",
-     price:"~$18", img:"https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/epcot/"},
-    {id:'ep16', name:"EPCOT Festival Bites", emoji:"🎪", tag:"Seasonal",
-     where:{venue:"Seasonal Festival Booths, World Showcase Promenade",land:"World Showcase",tip:"EPCOT hosts four annual festivals: Flower & Garden (spring), Food & Wine (fall), Festival of Arts (Jan–Feb), Festival of Holidays (winter). Each has 25+ exclusive food booths."},
-     desc:"Rotating globally inspired small plates, craft beers, and cocktails exclusive to EPCOT's world-class festivals. Many beloved fan-favorite dishes began here before becoming permanent menu items.",
-     price:"~$5–$14 per dish", img:"https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/events-tours/epcot/epcot-international-food-and-wine-festival/"},
+    {id:'ep01',e:'🍞',name:'School Bread',tag:'World Showcase',
+     w:{v:'Kringla Bakeri og Kafé',l:'Norway Pavilion, World Showcase',t:'Norway is on the left side of the World Showcase loop. The bakery is right next to the Frozen Ever After queue — you will smell the cardamom before you see the sign.'},
+     d:'A Norwegian cardamom sweet bun filled with vanilla custard cream, topped with pearl sugar and coconut. Soft, subtly floral, and one of EPCOT\'s most beloved snacks. A World Showcase institution for good reason.',
+     p:'~$5.49',link:'https://disneyworld.disney.go.com/dining/epcot/kringla-bakeri-og-kafe/'},
+    {id:'ep02',e:'☕',name:'School Bread Cold Brew',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:'Kringla Bakeri og Kafé',l:'Norway Pavilion, World Showcase',t:'Order both the School Bread and Cold Brew together — they were designed as a pairing. One of the best new EPCOT food combos of 2026.'},
+     d:'A sweet, creamy cardamom-kissed cold brew coffee that perfectly complements the School Bread. Brand new for 2026, this iced coffee has already developed a devoted following among repeat EPCOT visitors.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/epcot/kringla-bakeri-og-kafe/'},
+    {id:'ep03',e:'🥟',name:'Cheeseburger Spring Rolls',tag:'Cult Classic',
+     w:{v:'Joy of Tea kiosk',l:'China Pavilion, World Showcase',t:'On the water\'s edge inside the China Pavilion courtyard. One of EPCOT\'s most talked-about snacks — a genuine must-try that surprises everyone.'},
+     d:"Crispy spring roll wrappers packed with seasoned beef and melted cheddar — an absurd mashup that has developed a fierce fanbase. Golden, crunchy, and surprisingly, perfectly delicious.",
+     p:'~$8',link:'https://disneyworld.disney.go.com/dining/epcot/joy-of-tea/'},
+    {id:'ep04',e:'🥞',name:'Giant Savory Crêpe',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:'Crêpes À Emporter by La Crêperie de Paris',l:'France Pavilion, World Showcase',t:'New for 2026! Near La Crêperie de Paris in the France Pavilion. So filling it counts as a meal. Get there early — quantities are limited each day.'},
+     d:'A massive galette-style savory crepe stuffed with cheese, mushrooms, ham, and arugula — the cheese baked onto the top is the undisputed star. One of 2026\'s most exciting new EPCOT additions.',
+     p:'~$14',link:'https://disneyworld.disney.go.com/dining/epcot/la-creperie-de-paris/'},
+    {id:'ep05',e:'🥐',name:'Butter Croissant',tag:'France',
+     w:{v:'Les Halles Boulangerie-Pâtisserie',l:'France Pavilion, World Showcase',t:'Arrive when World Showcase opens at 11 AM for the best selection before popular items sell out. Also try the pain au chocolat and almond croissant while you are there.'},
+     d:'An authentically made French butter croissant — shatteringly flaky outside, airy and buttery within. The France pavilion bakery consistently delivers some of the best pastries in any theme park anywhere.',
+     p:'~$5',link:'https://disneyworld.disney.go.com/dining/epcot/les-halles-boulangerie-patisserie/'},
+    {id:'ep06',e:'🌰',name:'Croissant aux Amandes',tag:'France',
+     w:{v:'Les Halles Boulangerie-Pâtisserie',l:'France Pavilion, World Showcase',t:'Best enjoyed with a café au lait from the same counter. Denser and more filling than the plain croissant — worth the extra dollar.'},
+     d:'A twice-baked croissant stuffed with rich almond frangipane cream, topped with toasted sliced almonds and powdered sugar. Dense, fragrant, nutty, and absolutely magnificent.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/epcot/les-halles-boulangerie-patisserie/'},
+    {id:'ep07',e:'🍪',name:'Karamell-Küche Cookie Sandwich',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:'Karamell-Küche',l:'Germany Pavilion, World Showcase',t:'Rotating seasonal flavors — snickerdoodle, gingerbread, and carrot cake versions have appeared. Ask staff what is currently available before ordering.'},
+     d:'Seasonal caramel cookie sandwiches with a salted caramel buttercream filling that steals the show every time. Karamell-Küche is one of EPCOT\'s most irresistible shops — the warm caramel aroma alone is worth stopping for.',
+     p:'~$7',link:'https://disneyworld.disney.go.com/dining/epcot/karamell-kuche/'},
+    {id:'ep08',e:'🥥',name:'Kakamora Float',tag:'Limited',
+     w:{v:'Refreshment Port',l:'Near Canada Pavilion, World Showcase',t:'Look for the Moana-themed kiosk near the Canada pavilion. Great photo opportunity — the Kakamora coconut pirate garnish is adorable.'},
+     d:'A Moana-inspired frozen float: pineapple soft-serve over a blue raspberry-citrus punch base, topped with a Kakamora garnish. Playful, tropical, and a uniquely EPCOT experience.',
+     p:'~$7',link:'https://disneyworld.disney.go.com/dining/epcot/refreshment-port/'},
+    {id:'ep09',e:'🍨',name:'Artisan Gelato & Macaron Sandwich',tag:'France',
+     w:{v:"L'Artisan des Glaces",l:'France Pavilion, World Showcase',t:'Easy to walk past — look for the small shop beside Les Halles. Ask about seasonal flavors not on the board. The macaron ice cream sandwich is the showstopper.'},
+     d:'Handcrafted Italian-French gelato in rotating seasonal flavors. The macaron ice cream sandwich — two macarons flanking a scoop of rosé or seasonal gelato — is one of EPCOT\'s most spectacular desserts.',
+     p:'~$7–$9',link:'https://disneyworld.disney.go.com/dining/epcot/lartisan-des-glaces/'},
+    {id:'ep10',e:'🍯',name:'Baklava',tag:'Morocco',
+     w:{v:'Tangierine Café',l:'Morocco Pavilion, World Showcase',t:'Morocco is on the far right of World Showcase, between France and Japan. Tangierine Café serves fresh baklava all day at a quick walk-up counter.'},
+     d:'Layers of flaky phyllo filled with crushed pistachios and walnuts, soaked in honey and rose water. Sticky, aromatic, and as authentic as you will find outside Morocco itself.',
+     p:'~$5',link:'https://disneyworld.disney.go.com/dining/epcot/tangierine-cafe/'},
+    {id:'ep11',e:'🥖',name:'German Pretzel Bread',tag:'Germany',
+     w:{v:'Sommerfest',l:'Germany Pavilion, World Showcase',t:'Walk-up window inside the Germany courtyard. Order a pretzel roll and a Märzen from the beer garden counter next door for the perfect World Showcase pairing.'},
+     d:'A soft, chewy pretzel bread roll with a glossy dark crust and generous coarse salt. Baked fresh daily and served with house whole-grain mustard. Simple, honest, and wonderful.',
+     p:'~$5',link:'https://disneyworld.disney.go.com/dining/epcot/sommerfest/'},
+    {id:'ep12',e:'🧊',name:'Kaki Gori Shaved Ice',tag:'Japan',
+     w:{v:'Kabuki Café',l:'Japan Pavilion, World Showcase',t:'The Kabuki Café kiosk is in the Japan Pavilion courtyard. Flavors rotate seasonally — lemon yuzu and mango are standouts worth checking for.'},
+     d:'Ultra-fine shaved ice flavored with mango, cherry blossom, or lemon yuzu syrup. Lighter and fluffier than American snow cones, with a melt-on-your-tongue texture that is wonderfully refreshing.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/epcot/kabuki-cafe/'},
+    {id:'ep13',e:'🌮',name:'Fiesta Nachos',tag:'Mexico',
+     w:{v:'La Cantina de San Angel',l:'Mexico Pavilion, World Showcase',t:'Outdoor seating directly on the World Showcase Lagoon — prime real estate for the Harmonious nighttime show. Arrive early for a lagoon-side table.'},
+     d:'Tortilla chips piled high with seasoned beef, house queso, pico de gallo, pickled jalapeños, and sour cream. Shareable, messy, and one of the most satisfying savory snacks in all of EPCOT.',
+     p:'~$12',link:'https://disneyworld.disney.go.com/dining/epcot/la-cantina-de-san-angel/'},
+    {id:'ep14',e:'🍿',name:'Maple Popcorn',tag:'Canada',
+     w:{v:'Popcorn cart near Canada Pavilion',l:'Canada Pavilion, World Showcase',t:'Spot it by the maple leaf theming. A sweet-salty-buttery addictive combo — grab a big bucket for snacking during the Harmonious nighttime show.'},
+     d:'Freshly popped corn tossed in a real Canadian maple syrup glaze. Sweet, buttery, and lightly salty — a deceptively simple snack that always draws a crowd of repeat visitors.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/epcot/'},
+    {id:'ep15',e:'🦞',name:'Lobster Roll',tag:'Splurge',
+     w:{v:'Festival booths & seasonal venues near American Adventure',l:'American Adventure Pavilion area',t:'Check the EPCOT festival calendar — lobster rolls frequently appear in elevated forms at Food & Wine and Flower & Garden booths.'},
+     d:'Tender chunks of sweet lobster in a lemon-mayo dressing in a warm, butter-toasted split-top bun. A properly made New England lobster roll inside a theme park is a genuinely special and rare thing.',
+     p:'~$18',link:'https://disneyworld.disney.go.com/dining/epcot/'},
+    {id:'ep16',e:'🎪',name:'EPCOT Festival Bites',tag:'Seasonal',
+     w:{v:'Seasonal Festival Booths, World Showcase Promenade',l:'World Showcase',t:'EPCOT hosts four annual festivals: Flower & Garden (spring), Food & Wine (fall), Festival of Arts (Jan–Feb), Festival of Holidays (winter). Each brings 25+ exclusive food booths.'},
+     d:"Rotating globally inspired small plates, craft beers, and cocktails exclusive to EPCOT's world-class festivals. Many fan-favorite dishes began here before becoming permanent menu items.",
+     p:'~$5–$14 per dish',link:'https://disneyworld.disney.go.com/events-tours/epcot/epcot-international-food-and-wine-festival/'},
   ],
 
   hs: [
-    {id:'hs1', name:"Blue Milk", emoji:"💙", tag:"Galaxy's Edge",
-     where:{venue:"Milk Stand",land:"Star Wars: Galaxy's Edge",tip:"Near the entrance of Black Spire Outpost. Lines get long by mid-morning — go first thing or during Rise of the Resistance / Slinky Dog peak wait times."},
-     desc:"The legendary blue drink from A New Hope — reimagined as a plant-based frozen blend of coconut and rice milk with tropical fruit notes. Creamy, otherworldly, and utterly unique.",
-     price:"~$8", img:"https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/milk-stand/"},
-    {id:'hs2', name:"Green Milk", emoji:"💚", tag:"Galaxy's Edge",
-     where:{venue:"Milk Stand",land:"Star Wars: Galaxy's Edge",tip:"Same stand as Blue Milk. Many guests order both and compare — they're distinct. Green has a citrus punch, blue leans creamier and tropical."},
-     desc:"Inspired by The Last Jedi, this plant-based frozen drink bursts with citrus, passion fruit, and tropical notes. Bright and refreshing, it's a genuinely one-of-a-kind flavor experience.",
-     price:"~$8", img:"https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/milk-stand/"},
-    {id:'hs3', name:"Ronto Wrap", emoji:"🌯", tag:"Galaxy's Edge",
-     where:{venue:"Ronto Roasters",land:"Star Wars: Galaxy's Edge",tip:"A giant podracer engine slowly rotates meats inside — one of Disney's most immersive dining experiences. Often has a queue but consistently worth the wait."},
-     desc:"Grilled pork sausage and roasted pork in warm pita with tangy slaw and peppercorn sauce. Consistently rated one of the very best quick-service items across all of Walt Disney World.",
-     price:"~$14", img:"https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/ronto-roasters/"},
-    {id:'hs4', name:"Pizza Spring Rolls", emoji:"🍕", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"New snack cart in Toy Story Land",land:"Toy Story Land",tip:"Brand new for 2026! Look for the cart near Toy Story Mania. These sell out quickly — grab them in the morning if possible before the lunch rush."},
-     desc:"Crispy spring roll wrappers stuffed with pizza fillings — melted mozzarella, pepperoni, and marinara. A playful twist on a classic that immediately caught everyone's attention when the new Toy Story Land cart opened in early 2026.",
-     price:"~$9", img:"https://images.unsplash.com/photo-1617196034183-421b4040f2b8?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/"},
-    {id:'hs5', name:"Totchos", emoji:"🧆", tag:"Toy Story Land",
-     where:{venue:"Woody's Lunch Box",land:"Toy Story Land",tip:"Woody's is a walk-up window shaped like a giant lunchbox in the center of Toy Story Land. Limited nearby seating — grab a spot before ordering."},
-     desc:"Tater tots buried under queso, beef chili, pico de gallo, and sour cream. Messy, filling, shareable, and consistently one of the most talked-about snacks in any Disney park.",
-     price:"~$11", img:"https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/woodys-lunch-box/"},
-    {id:'hs6', name:"Your Chosen Path Cupcake", emoji:"⚡", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"Backlot Express",land:"Echo Lake (near Star Tours)",tip:"Available while Star Wars-themed items are on the menu. The 'secret lightsaber color' inside makes it a fun surprise — great for Star Wars fans of all ages."},
-     desc:"A cookies-and-cream cupcake with marshmallow buttercream, a white chocolate X-Wing, and milk chocolate rocks. Inside hides a secret lightsaber color revealed as you eat. Rich, sweet, and brilliantly themed for 2026.",
-     price:"~$6.79", img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/backlot-express/"},
-    {id:'hs7', name:"Moof Juice with Lightsaber Swizzle", emoji:"🔵", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"Docking Bay 7 Food and Cargo",land:"Star Wars: Galaxy's Edge",tip:"The lightsaber swizzle stick is rechargeable and reusable — a souvenir worth keeping. Perfectly refreshing without being overly sweet."},
-     desc:"Fruit punch, orange-pineapple, and chipotle-pineapple juice served with a rechargeable lightsaber swizzle stick in your choice of color. New for 2026 — a refreshing, fun drink that's as much a souvenir as it is a snack.",
-     price:"~$15.99", img:"https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/docking-bay-7-food-and-cargo/"},
-    {id:'hs8', name:"Ronto Morning Wrap", emoji:"🍳", tag:"Breakfast",
-     where:{venue:"Ronto Roasters",land:"Star Wars: Galaxy's Edge",tip:"Available ONLY during breakfast hours (park open until ~10:30 AM). A great reason to arrive at rope drop — Galaxy's Edge before the crowds is truly magical."},
-     desc:"An egg, shredded pork, and grilled link sausage in warm pita with a tangy sauce. A hearty, flavorful Galaxy's Edge breakfast that most guests completely miss by arriving late.",
-     price:"~$13", img:"https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/ronto-roasters/"},
-    {id:'hs9', name:"PB&J Milkshake", emoji:"🥜", tag:"Retro",
-     where:{venue:"Tune-In Lounge (next to 50's Prime Time Café)",land:"Echo Lake area",tip:"Tune-In Lounge doesn't require a reservation — walk up and order at the bar. Best way to get the milkshake without booking a full table-service meal."},
-     desc:"Thick, creamy vanilla ice cream blended with peanut butter and strawberry jam. Retro, indulgent, and loaded — one of Hollywood Studios' most beloved dessert drinks since the café opened.",
-     price:"~$9", img:"https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/50s-prime-time-cafe/"},
-    {id:'hs10', name:"Carrot Cake Cookie (Whoopie Pie)", emoji:"🥕", tag:"Must-Try",
-     where:{venue:"Trolley Car Café (Starbucks)",land:"Hollywood Boulevard (park entrance)",tip:"A Disney Food Blog legend — available most mornings. Grab one with a cold brew from the same counter for the perfect Hollywood Studios start."},
-     desc:"Two thick, spiced carrot cake cookies sandwiching a rich cream cheese frosting — tangy, not overly sweet. Soft, chewy, and creamy all at once. A legendary item and one of 2026's top-rated Hollywood Studios snacks.",
-     price:"~$5.70", img:"https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/trolley-car-cafe/"},
-    {id:'hs11', name:"Smoked Chicken Mac & Cheese", emoji:"🍝", tag:"Savory",
-     where:{venue:"Backlot Express",land:"Echo Lake (near Star Tours)",tip:"A great air-conditioned escape during peak afternoon heat. Backlot Express is one of the most underrated quick-service spots in Hollywood Studios."},
-     desc:"Creamy shell mac and cheese topped with pulled smoked chicken, crispy breadcrumbs, and a drizzle of smoky barbecue sauce. Hearty, comforting, and genuinely great theme park food.",
-     price:"~$12", img:"https://images.unsplash.com/photo-1612892483236-52d32a0e0ac1?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/backlot-express/"},
-    {id:'hs12', name:"Oga's Cantina Cocktails", emoji:"🍸", tag:"Must Reserve",
-     where:{venue:"Oga's Cantina",land:"Star Wars: Galaxy's Edge",tip:"RESERVATIONS ESSENTIAL — book 60 days out on the Disney app. Limit of 2 drinks per person. Standing room only, 45-min max stay. The most immersive bar experience in any theme park."},
-     desc:"Creative cocktails like the Fuzzy Tauntaun (peach) and Jedi Mind Trick (blueberry lemon) served under DJ R-3X's alien music beats in a jaw-dropping Star Wars environment.",
-     price:"~$14–$17", img:"https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/hollywood-studios/ogas-cantina/"},
+    {id:'hs01',e:'💙',name:'Blue Milk',tag:"Galaxy's Edge",
+     w:{v:'Milk Stand',l:"Star Wars: Galaxy's Edge",t:'Near the entrance of Black Spire Outpost. Lines grow long by mid-morning — go first thing or during Rise of the Resistance peak wait times for no wait.'},
+     d:"The legendary blue beverage from A New Hope reimagined as a plant-based frozen blend of coconut and rice milk with tropical fruit notes. Creamy, otherworldly, and utterly unique.",
+     p:'~$8',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/milk-stand/'},
+    {id:'hs02',e:'💚',name:'Green Milk',tag:"Galaxy's Edge",
+     w:{v:'Milk Stand',l:"Star Wars: Galaxy's Edge",t:'Same stand as Blue Milk. Many guests order both and compare — they are distinctly different. Green is citrus-forward; Blue is creamier and more tropical.'},
+     d:'Inspired by The Last Jedi, this plant-based frozen drink bursts with citrus, passion fruit, and tropical notes. Bright, refreshing, and a genuinely one-of-a-kind flavor experience.',
+     p:'~$8',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/milk-stand/'},
+    {id:'hs03',e:'🌯',name:'Ronto Wrap',tag:"Galaxy's Edge",
+     w:{v:'Ronto Roasters',l:"Star Wars: Galaxy's Edge",t:'A giant podracer engine slowly rotates meats inside — one of Disney\'s most immersive dining experiences. Often has a queue but consistently worth the wait.'},
+     d:'Grilled pork sausage and roasted pork in warm pita with tangy slaw and peppercorn sauce. Consistently rated one of the very best quick-service items across all of Walt Disney World.',
+     p:'~$14',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/ronto-roasters/'},
+    {id:'hs04',e:'🍕',name:'Pizza Spring Rolls',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:'New snack cart in Toy Story Land',l:'Toy Story Land',t:'Brand new for 2026! Near Toy Story Mania. These sell out quickly — grab them in the morning before the lunch rush hits the area.'},
+     d:"Crispy spring roll wrappers stuffed with melted mozzarella, pepperoni, and marinara — a playful Toy Story Land twist that immediately caught everyone's attention when the new cart opened in early 2026.",
+     p:'~$9',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/'},
+    {id:'hs05',e:'🧆',name:'Totchos',tag:'Toy Story Land',
+     w:{v:"Woody's Lunch Box",l:'Toy Story Land',t:"Woody's is a walk-up window shaped like a giant lunchbox in the center of Toy Story Land. Limited nearby seating — grab a spot before you order."},
+     d:'Tater tots buried under queso, beef chili, pico de gallo, and sour cream. Messy, filling, shareable, and consistently one of the most talked-about snacks across any Disney park.',
+     p:'~$11',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/woodys-lunch-box/'},
+    {id:'hs06',e:'⚡',name:'Your Chosen Path Cupcake',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:'Backlot Express',l:'Echo Lake (near Star Tours)',t:'Available while Star Wars theming is on the menu. The secret lightsaber color inside makes it a fun reveal — great for Star Wars fans of every age.'},
+     d:'A cookies-and-cream cupcake with marshmallow buttercream, a white chocolate X-Wing, and chocolate rocks on top. Inside hides a secret lightsaber color revealed as you eat. Rich, sweet, and brilliantly themed.',
+     p:'~$6.79',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/backlot-express/'},
+    {id:'hs07',e:'🔵',name:'Moof Juice with Lightsaber Swizzle',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:'Docking Bay 7 Food and Cargo',l:"Star Wars: Galaxy's Edge",t:'The rechargeable lightsaber swizzle stick is a reusable souvenir worth keeping. Refreshing without being overly sweet — one of the best-value new items in Galaxy\'s Edge.'},
+     d:'Fruit punch, orange-pineapple, and chipotle-pineapple juice served with a rechargeable lightsaber swizzle stick in your choice of color. New for 2026 — as much a souvenir as it is a drink.',
+     p:'~$15.99',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/docking-bay-7-food-and-cargo/'},
+    {id:'hs08',e:'🍳',name:'Ronto Morning Wrap',tag:'Breakfast',
+     w:{v:'Ronto Roasters',l:"Star Wars: Galaxy's Edge",t:"Only available during breakfast hours (roughly park open until 10:30 AM). A great reason to arrive at rope drop — Galaxy's Edge before the crowds is genuinely magical."},
+     d:'Egg, shredded pork, and grilled link sausage in warm pita with a tangy sauce. A hearty, flavorful Galaxy\'s Edge breakfast that most guests completely miss by arriving to the park too late.',
+     p:'~$13',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/ronto-roasters/'},
+    {id:'hs09',e:'🥜',name:'PB&J Milkshake',tag:'Retro',
+     w:{v:"Tune-In Lounge (next to 50's Prime Time Café)",l:'Echo Lake area',t:"Tune-In Lounge does not require a reservation — walk up and order at the bar. The best way to get the milkshake without booking a full table-service meal."},
+     d:'Thick, creamy vanilla ice cream blended with peanut butter and strawberry jam. Retro, indulgent, and loaded — one of Hollywood Studios\' most beloved dessert drinks.',
+     p:'~$9',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/50s-prime-time-cafe/'},
+    {id:'hs10',e:'🥕',name:'Carrot Cake Cookie (Whoopie Pie)',tag:'Must-Try',
+     w:{v:'Trolley Car Café (Starbucks)',l:'Hollywood Boulevard (park entrance)',t:'A Disney Food Blog legend. Available most mornings — grab one with a cold brew from the same counter for the perfect Hollywood Studios start to your day.'},
+     d:'Two thick, spiced carrot cake cookies sandwiching a rich cream cheese frosting — tangy, not overly sweet. Soft, chewy, and creamy. One of 2026\'s top-rated Hollywood Studios snacks.',
+     p:'~$5.70',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/trolley-car-cafe/'},
+    {id:'hs11',e:'🍝',name:'Smoked Chicken Mac & Cheese',tag:'Savory',
+     w:{v:'Backlot Express',l:'Echo Lake (near Star Tours)',t:'A great air-conditioned escape during afternoon heat. One of the most underrated quick-service spots in Hollywood Studios.'},
+     d:'Creamy shell mac and cheese topped with pulled smoked chicken, crispy breadcrumbs, and a drizzle of smoky barbecue sauce. Hearty, comforting, and genuinely great theme park food.',
+     p:'~$12',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/backlot-express/'},
+    {id:'hs12',e:'🍸',name:"Oga's Cantina Cocktails",tag:'Must Reserve',
+     w:{v:"Oga's Cantina",l:"Star Wars: Galaxy's Edge",t:'RESERVATIONS ESSENTIAL — book 60 days out on the Disney app. 2 drinks per person max. Standing room only, 45-min limit. The most immersive bar experience in any theme park on Earth.'},
+     d:"Creative cocktails like the Fuzzy Tauntaun (peach) and Jedi Mind Trick (blueberry lemon) served under DJ R-3X's alien music beats in a jaw-dropping Star Wars environment.",
+     p:'~$14–$17',link:'https://disneyworld.disney.go.com/dining/hollywood-studios/ogas-cantina/'},
   ],
 
   ak: [
-    {id:'ak1', name:"Pongu Lumpia", emoji:"🥟", tag:"Pandora",
-     where:{venue:"Pongu Pongu",land:"Pandora — The World of Avatar",tip:"The walk-up stand near the Flight of Passage entrance, decorated with bioluminescent Pandoran plants. Pair with the Night Blossom for the full Pandora snack experience."},
-     desc:"A crispy spring roll filled with warm pineapple cream cheese, dusted with powdered sugar. Warm, flaky, and sweet — one of the most creative and unique snacks in all of Disney World.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1612429583219-a5eeb0a1cbab?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/pongu-pongu/"},
-    {id:'ak2', name:"Night Blossom", emoji:"🌸", tag:"Pandora",
-     where:{venue:"Pongu Pongu",land:"Pandora — The World of Avatar",tip:"Same counter as Pongu Lumpia. The glow cube garnish reacts to light — stunning photos at dusk when Pandora's bioluminescence fully activates."},
-     desc:"Layers of passion fruit, apple, and lime over lavender lemonade, topped with coconut boba pearls and a citrus-blossom garnish. Beautiful, complex, and utterly refreshing.",
-     price:"~$7", img:"https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/pongu-pongu/"},
-    {id:'ak3', name:"Flame Tree BBQ Ribs", emoji:"🍖", tag:"Best BBQ",
-     where:{venue:"Flame Tree Barbecue",land:"Discovery Island",tip:"Walk past the Tree of Life toward the waterway — the seating area has stunning views of the park and is one of the most beautiful dining spots at Disney."},
-     desc:"St. Louis-style smoked pork ribs with a sweet-tangy house barbecue sauce, served with two sides. Widely considered the best barbecue anywhere across all four Disney World parks.",
-     price:"~$22", img:"https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/flame-tree-barbecue/"},
-    {id:'ak4', name:"Cookie Dough Brownie Ice Cream Sandwich", emoji:"🍪", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"Terra Treats",land:"DinoLand, U.S.A. (formerly Dino-Bite Snacks area)",tip:"Terra Treats replaced the old Dino-Bite Snacks location and is already getting rave reviews. The rectangular shape makes it easier to eat than the old round sandwiches."},
-     desc:"Cookie dough on top, creamy ice cream in the middle, and a brownie on the bottom — all three of your favorite things in one portable sandwich. Brand new for 2026 and already a fan obsession.",
-     price:"~$8", img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/"},
-    {id:'ak5', name:"Pineapple Soft Serve", emoji:"🍍", tag:"Hidden Gem",
-     where:{venue:"Tamu Tamu Refreshments",land:"Africa — Harambe Village",tip:"Much shorter lines than Aloha Isle in Magic Kingdom for the identical Dole Whip. A seasoned guest pro move: skip the MK crowds and get yours here post-safari."},
-     desc:"The same beloved pineapple Dole Whip from Magic Kingdom — dairy-free, tropical, and irresistibly smooth. Available in cones, cups, or as a float, almost always with a shorter wait.",
-     price:"~$5–$7", img:"https://images.unsplash.com/photo-1567206563114-c179706a56c6?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/tamu-tamu-refreshments/"},
-    {id:'ak6', name:"Kusafiri Cinnamon Roll", emoji:"🌀", tag:"Morning",
-     where:{venue:"Kusafiri Coffee Shop & Bakery",land:"Africa — Harambe Village",tip:"Located right next to Kilimanjaro Safaris — a perfect pre-safari breakfast stop. Opens when the park opens; freshest rolls are available first thing in the morning."},
-     desc:"A large, generously frosted cinnamon roll decorated with safari-themed icing. Warm, gooey, and lightly spiced — a wonderful way to fuel up before a full Animal Kingdom day.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1509722747041-616f39b57569?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/kusafiri-coffee-shop-and-bakery/"},
-    {id:'ak7', name:"Frozen Limeade", emoji:"🍋", tag:"Refreshing",
-     where:{venue:"Harambe Market",land:"Africa — Harambe Village",tip:"Harambe Market is an open-air food hall with communal seating. Pair the drink with the chicken skewers for an excellent, affordable light lunch."},
-     desc:"Blended frozen limeade swirled with coconut cream for a tropical twist. Tart, sweet, and creamy — arguably the most refreshing drink in all of Animal Kingdom on a hot Florida afternoon.",
-     price:"~$6", img:"https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/harambe-market/"},
-    {id:'ak8', name:"Carrot Cake Cookie", emoji:"🥕", tag:"Hidden Gem",
-     where:{venue:"Restaurantosaurus",land:"DinoLand, U.S.A.",tip:"Inside the grab-and-go section at the front of Restaurantosaurus. Most guests walk right past it — one of Animal Kingdom's best-kept secrets and most satisfying snacks."},
-     desc:"Two large, warmly spiced carrot cake cookies sandwiched with thick cream cheese frosting. Soft, chewy, and generously sized — the definitive Animal Kingdom hidden gem snack.",
-     price:"~$5", img:"https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/restaurantosaurus/"},
-    {id:'ak9', name:"Safari Chicken Skewers", emoji:"🍢", tag:"Savory",
-     where:{venue:"Harambe Market",land:"Africa — Harambe Village",tip:"Look for the vendor with the active charcoal grill. The communal seating area fills up at lunch — go early or after 2 PM for the best table options."},
-     desc:"Tender, marinated chicken thighs grilled over charcoal with African spice rubs, served with cucumber salad and sweet fried plantains. Fragrant, flavorful, and brilliantly seasoned.",
-     price:"~$13", img:"https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/harambe-market/"},
-    {id:'ak10', name:"Cheeseburger Pods", emoji:"🫙", tag:"Pandora",
-     where:{venue:"Satu'li Canteen",land:"Pandora — The World of Avatar",tip:"Satu'li Canteen is the main quick-service in Pandora. Get the pods as an appetizer alongside a full bowl — the creamy herb dipping sauce is essential."},
-     desc:"Steamed dumplings in blue and green Pandoran hues, filled with beef and cheddar, served with a creamy herb dipping sauce. Visually stunning and surprisingly, genuinely delicious.",
-     price:"~$5", img:"https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/satuli-canteen/"},
-    {id:'ak11', name:"Satu'li Bowl", emoji:"🥣", tag:"Pandora",
-     where:{venue:"Satu'li Canteen",land:"Pandora — The World of Avatar",tip:"Fan-favorite combo: rice base + beef bulgogi protein + creamy herb sauce. One of the most customizable and consistently satisfying quick-service meals at Disney World."},
-     desc:"Fully customizable grain bowls with Pandoran-inspired vegetables and your choice of protein (beef bulgogi, chicken, fish, or tofu) and house-made sauce. One of Disney's best quick-service meals, full stop.",
-     price:"~$14", img:"https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/satuli-canteen/"},
-    {id:'ak12', name:"Chicharrón Corn", emoji:"🌽", tag:"Street Food",
-     where:{venue:"Harambe Market & outdoor carts",land:"Africa — Harambe Village",tip:"Look for the snack cart near the Harambe Market entrance. Preparation rotates seasonally — ask the attendant what's currently available."},
-     desc:"A roasted corn cob slathered in garlic-lime butter, dusted with chicharrón powder, and finished with crumbled cotija cheese. Bold, smoky, tangy, and deeply satisfying open-air street-food flavors.",
-     price:"~$7", img:"https://images.unsplash.com/photo-1551754177-f1f8f2e5c8ab?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/harambe-market/"},
-    {id:'ak13', name:"Carrot Cake Sundae", emoji:"🍦", tag:"NEW 2026", tagClass:"badge-new",
-     where:{venue:"Terra Treats",land:"DinoLand, U.S.A.",tip:"Also at Terra Treats alongside the Cookie Dough Brownie Ice Cream Sandwich. An Annual Passholder exclusive treat that debuted in early 2026 — check availability."},
-     desc:"A carrot cake sundae combining house-made carrot cake with soft-serve ice cream and cream cheese drizzle. A new 2026 treat from Terra Treats that has already earned devoted fans among Annual Passholders.",
-     price:"~$8", img:"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/"},
-    {id:'ak14', name:"Creature Comforts Coffee & Pastries", emoji:"☕", tag:"Coffee Stop",
-     where:{venue:"Creature Comforts (Starbucks)",land:"Discovery Island (near park entrance)",tip:"Often has shorter lines than the Magic Kingdom Starbucks. A great stop for a morning coffee run while the park is still quiet and the animals are most active."},
-     desc:"Fresh-baked croissants, cheese danishes, and muffins paired with Starbucks specialty coffee drinks in a beautifully nature-themed space decorated with live animals outside the windows.",
-     price:"~$5–$8", img:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80",
-     link:"https://disneyworld.disney.go.com/dining/animal-kingdom/creature-comforts/"},
+    {id:'ak01',e:'🥟',name:'Pongu Lumpia',tag:'Pandora',
+     w:{v:'Pongu Pongu',l:'Pandora — The World of Avatar',t:'Walk-up stand near the Flight of Passage entrance, decorated with bioluminescent Pandoran plants. Pair with the Night Blossom for the full Pandora snack experience.'},
+     d:'A crispy spring roll filled with warm pineapple cream cheese and dusted with powdered sugar. Warm, flaky, and sweet — one of the most creative and unique snacks in all of Disney World.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/pongu-pongu/'},
+    {id:'ak02',e:'🌸',name:'Night Blossom',tag:'Pandora',
+     w:{v:'Pongu Pongu',l:'Pandora — The World of Avatar',t:'Same counter as Pongu Lumpia. The glow cube garnish reacts to light — stunning for photos at dusk when Pandora\'s bioluminescence fully activates.'},
+     d:'Layers of passion fruit, apple, and lime over lavender lemonade, topped with coconut boba pearls and a citrus-blossom garnish. Beautiful, complex, and wonderfully refreshing.',
+     p:'~$7',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/pongu-pongu/'},
+    {id:'ak03',e:'🍖',name:'Flame Tree BBQ Ribs',tag:'Best BBQ',
+     w:{v:'Flame Tree Barbecue',l:'Discovery Island',t:'Walk past the Tree of Life toward the waterway — the seating area has stunning views and is one of the most beautiful dining spots in any Disney park.'},
+     d:'St. Louis-style smoked pork ribs with a sweet-tangy house barbecue sauce, served with two sides. Widely considered the best barbecue anywhere across all four Disney World parks.',
+     p:'~$22',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/flame-tree-barbecue/'},
+    {id:'ak04',e:'🍪',name:'Cookie Dough Brownie Ice Cream Sandwich',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:'Terra Treats',l:'DinoLand, U.S.A. (formerly Dino-Bite Snacks area)',t:'Terra Treats replaced the old Dino-Bite Snacks location and is already earning rave reviews. The rectangular shape makes it easier to eat than the old round sandwiches.'},
+     d:'Cookie dough on top, creamy ice cream in the middle, and a brownie on the bottom — all three of your favorites in one portable sandwich. Brand new for 2026 and already a fan obsession at Animal Kingdom.',
+     p:'~$8',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/'},
+    {id:'ak05',e:'🍍',name:'Pineapple Soft Serve',tag:'Hidden Gem',
+     w:{v:'Tamu Tamu Refreshments',l:'Africa — Harambe Village',t:'Much shorter lines than Aloha Isle in Magic Kingdom for the identical Dole Whip. A seasoned guest pro move: skip the MK crowds and get yours here after the safari.'},
+     d:'The same beloved pineapple Dole Whip from Magic Kingdom — dairy-free, tropical, and irresistibly smooth. Available in cones, cups, or as a float, almost always with a much shorter wait.',
+     p:'~$5–$7',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/tamu-tamu-refreshments/'},
+    {id:'ak06',e:'🌀',name:'Kusafiri Cinnamon Roll',tag:'Morning',
+     w:{v:'Kusafiri Coffee Shop & Bakery',l:'Africa — Harambe Village',t:'Located right next to Kilimanjaro Safaris — a perfect pre-safari breakfast stop. Opens with the park; freshest rolls are available first thing in the morning.'},
+     d:'A large, generously frosted cinnamon roll with safari-themed icing. Warm, gooey, and lightly spiced — a wonderful way to fuel up before a full Animal Kingdom day in the sun.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/kusafiri-coffee-shop-and-bakery/'},
+    {id:'ak07',e:'🍋',name:'Frozen Limeade',tag:'Refreshing',
+     w:{v:'Harambe Market',l:'Africa — Harambe Village',t:'Harambe Market is an open-air food hall with communal seating. Pair the drink with the chicken skewers for an excellent, affordable light lunch.'},
+     d:'Blended frozen limeade swirled with coconut cream for a tropical twist. Tart, sweet, and creamy — arguably the most refreshing drink in all of Animal Kingdom on a hot Florida afternoon.',
+     p:'~$6',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/harambe-market/'},
+    {id:'ak08',e:'🥕',name:'Carrot Cake Cookie',tag:'Hidden Gem',
+     w:{v:'Restaurantosaurus',l:'DinoLand, U.S.A.',t:'Inside the grab-and-go section at the front of Restaurantosaurus. Most guests walk right past it — one of Animal Kingdom\'s best-kept secrets.'},
+     d:'Two large, warmly spiced carrot cake cookies sandwiched with thick cream cheese frosting. Soft, chewy, and generously sized — the definitive Animal Kingdom hidden gem snack.',
+     p:'~$5',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/restaurantosaurus/'},
+    {id:'ak09',e:'🍢',name:'Safari Chicken Skewers',tag:'Savory',
+     w:{v:'Harambe Market',l:'Africa — Harambe Village',t:'Look for the vendor with the active charcoal grill. The communal seating fills up at lunch — go early or after 2 PM for the best table options.'},
+     d:'Tender, marinated chicken thighs grilled over charcoal with African spice rubs, served with cucumber salad and sweet fried plantains. Fragrant, flavorful, and brilliantly seasoned.',
+     p:'~$13',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/harambe-market/'},
+    {id:'ak10',e:'🫙',name:'Cheeseburger Pods',tag:'Pandora',
+     w:{v:"Satu'li Canteen",l:'Pandora — The World of Avatar',t:"Get the pods as an appetizer alongside a full Satu'li Bowl — the creamy herb dipping sauce is absolutely essential. Do not skip it."},
+     d:'Steamed dumplings in blue and green Pandoran hues, filled with beef and cheddar, served with a creamy herb dipping sauce. Visually stunning and genuinely delicious.',
+     p:'~$5',link:"https://disneyworld.disney.go.com/dining/animal-kingdom/satuli-canteen/"},
+    {id:'ak11',e:'🥣',name:"Satu'li Bowl",tag:'Pandora',
+     w:{v:"Satu'li Canteen",l:'Pandora — The World of Avatar',t:'Fan-favorite combo: rice + beef bulgogi + creamy herb sauce. One of the most customizable and consistently satisfying quick-service meals across all of Disney World.'},
+     d:"Fully customizable grain bowls with Pandoran-inspired vegetables and your choice of protein (beef bulgogi, chicken, fish, or tofu) and house-made sauce. One of Disney's best quick-service meals, full stop.",
+     p:'~$14',link:"https://disneyworld.disney.go.com/dining/animal-kingdom/satuli-canteen/"},
+    {id:'ak12',e:'🌽',name:'Chicharrón Corn',tag:'Street Food',
+     w:{v:'Harambe Market & outdoor carts',l:'Africa — Harambe Village',t:'Look for the snack cart near the Harambe Market entrance. Preparation rotates seasonally — ask the attendant what toppings are currently available.'},
+     d:'A roasted corn cob slathered in garlic-lime butter, dusted with chicharrón powder, and finished with crumbled cotija cheese. Bold, smoky, tangy, and deeply satisfying open-air street-food flavors.',
+     p:'~$7',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/harambe-market/'},
+    {id:'ak13',e:'🍦',name:'Carrot Cake Sundae',tag:'NEW 2026',tagClass:'badge-new',
+     w:{v:'Terra Treats',l:'DinoLand, U.S.A.',t:'Also at Terra Treats alongside the Cookie Dough Brownie Sandwich. An Annual Passholder exclusive treat that debuted in early 2026 — check current availability with a cast member.'},
+     d:'Carrot cake paired with soft-serve ice cream and a cream cheese drizzle. New for 2026 from Terra Treats — already earned devoted fans among Annual Passholders who keep coming back for it.',
+     p:'~$8',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/'},
+    {id:'ak14',e:'☕',name:'Creature Comforts Coffee & Pastries',tag:'Coffee Stop',
+     w:{v:'Creature Comforts (Starbucks)',l:'Discovery Island (near park entrance)',t:'Often shorter lines than the Magic Kingdom Starbucks. Great stop for a morning coffee run while the park is still quiet and the animals are most active.'},
+     d:'Fresh-baked croissants, cheese danishes, and muffins paired with Starbucks specialty coffee drinks in a beautifully nature-themed space — the perfect Animal Kingdom morning ritual.',
+     p:'~$5–$8',link:'https://disneyworld.disney.go.com/dining/animal-kingdom/creature-comforts/'},
   ],
 };
 
-// ── RENDER CARD ──────────────────────────────────────────────────────────────
-function makeCard(s, parkId, idx) {
-  const isFav = favorites.includes(s.id);
-  const isCustom = !!s.custom;
-  const tagClass = s.tagClass || '';
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function card(s, park, idx) {
+  const isFav = favs.includes(s.id);
+  const isCus = !!s.custom;
+  const tc    = s.tagClass || '';
+  const hasImg = s.img && s.img.trim();
   return `
-    <article class="snack-card${isCustom?' custom-card':''}" data-id="${s.id}" data-park="${parkId}"
-      data-name="${s.name.toLowerCase()}"
-      data-desc="${s.desc.toLowerCase()}"
-      data-loc="${(s.where.venue+' '+s.where.land).toLowerCase()}">
-      <div class="img-wrap">
-        <img src="${s.img||''}" alt="${s.name}" loading="lazy" onerror="onImgError(this)" />
-        <span class="snack-badge ${tagClass}">${s.tag}</span>
-        ${isCustom?'':'<span class="snack-rank">#'+idx+'</span>'}
-        <button class="fav-btn-card${isFav?' is-fav':''}" onclick="toggleFav('${s.id}',this)" title="${isFav?'Remove from':'Add to'} favorites">
-          ${isFav?'❤️':'🤍'}
-        </button>
+  <article class="card${isCus?' custom':''}" data-id="${s.id}" data-park="${park}"
+    data-n="${s.name.toLowerCase()}"
+    data-d="${(s.d||'').toLowerCase()}"
+    data-w="${((s.w?.v||'')+' '+(s.w?.l||'')).toLowerCase()}">
+    <div class="vis">
+      ${hasImg ? `<img src="${s.img}" alt="${s.name}" loading="lazy" onerror="this.style.display='none'">` : ''}
+      <span class="vis-emoji">${s.e||'⭐'}</span>
+      <span class="badge-pill ${tc}">${s.tag}</span>
+      ${!isCus ? `<span class="rank-pill">#${idx}</span>` : ''}
+      <button class="fav-btn${isFav?' loved':''}" onclick="toggleFav('${s.id}',this)" title="${isFav?'Remove from':'Add to'} favorites">${isFav?'❤️':'🤍'}</button>
+    </div>
+    <div class="body">
+      <h3 class="sname">${s.name}</h3>
+      <div class="where">
+        <div class="wr"><span class="wl">🏪 Venue</span><span class="wv">${s.w?.v||''}</span></div>
+        <div class="wr"><span class="wl">📍 Land</span><span class="wv">${s.w?.l||''}</span></div>
+        <div class="wr"><span class="wl">💡 Tip</span><span class="wv">${s.w?.t||''}</span></div>
       </div>
-      <div class="snack-body">
-        <h3 class="snack-name">${s.emoji||''} ${s.name}</h3>
-        <div class="snack-where">
-          <div class="where-row"><span class="where-label">🏪 Venue</span><span class="where-val">${s.where.venue}</span></div>
-          <div class="where-row"><span class="where-label">📍 Land</span><span class="where-val">${s.where.land}</span></div>
-          <div class="where-row"><span class="where-label">💡 Tip</span><span class="where-val">${s.where.tip}</span></div>
-        </div>
-        <p class="snack-desc">${s.desc}</p>
-        <div class="snack-footer">
-          <span class="snack-price">💰 ${s.price||'Price varies'}</span>
-          <a class="snack-link" href="${s.link||'https://disneyworld.disney.go.com/dining/'}" target="_blank" rel="noopener">Disney Site ↗</a>
-        </div>
+      <p class="desc">${s.d||''}</p>
+      <div class="foot">
+        <span class="price">💰 ${s.p||'Price varies'}</span>
+        <a class="link" href="${s.link||'https://disneyworld.disney.go.com/dining/'}" target="_blank" rel="noopener">Disney Site ↗</a>
       </div>
-    </article>`;
+    </div>
+  </article>`;
 }
 
-function renderPark(parkId) {
-  const regular = SNACKS[parkId] || [];
-  const custom = customSnacks.filter(s => s.park === parkId);
-  const all = [...regular, ...custom];
-  const grid = document.getElementById('grid-'+parkId);
-  if(!grid) return;
-  grid.innerHTML = all.map((s,i) => makeCard(s, parkId, i+1)).join('');
-  const tally = document.getElementById('tally-'+parkId);
-  if(tally) tally.textContent = all.length + ' snacks' + (custom.length ? ` (${custom.length} custom)` : '');
+function renderPark(pid) {
+  const base   = DATA[pid] || [];
+  const custom = customs.filter(s => s.park === pid);
+  const all    = [...base, ...custom];
+  const grid   = document.getElementById('grid-'+pid);
+  if (!grid) return;
+  grid.innerHTML = all.map((s,i) => card(s, pid, i+1)).join('');
+  const t = document.getElementById('t-'+pid);
+  if (t) t.textContent = all.length + ' snacks' + (custom.length ? ` · ${custom.length} custom` : '');
+}
+
+function renderFavs() {
+  const grid = document.getElementById('grid-fav');
+  if (!favs.length) {
+    grid.innerHTML = '<div class="empty"><div>🤍</div><p>Tap 🤍 on any snack to save it here.</p></div>';
+    document.getElementById('t-fav').textContent = '0 saved';
+    return;
+  }
+  const all = [
+    ...Object.entries(DATA).flatMap(([pid,arr]) => arr.map(s=>({...s,_park:pid}))),
+    ...customs.map(s=>({...s,_park:s.park}))
+  ];
+  const list = favs.map(id => all.find(s=>s.id===id)).filter(Boolean);
+  grid.innerHTML = list.map((s,i) => card(s, s._park, i+1)).join('');
+  document.getElementById('t-fav').textContent = list.length + ' saved';
 }
 
 function renderAll() {
   ['mk','ep','hs','ak'].forEach(renderPark);
   renderFavs();
-  updateFavCount();
+  updateCount();
 }
 
-// ── FAVORITES ────────────────────────────────────────────────────────────────
+// ── FAVORITES ─────────────────────────────────────────────────────────────────
 function toggleFav(id, btn) {
-  const idx = favorites.indexOf(id);
-  if(idx === -1){
-    favorites.push(id);
-    btn.textContent = '❤️'; btn.classList.add('is-fav');
-    showToast('Added to favorites ❤️');
-  } else {
-    favorites.splice(idx,1);
-    btn.textContent = '🤍'; btn.classList.remove('is-fav');
-    showToast('Removed from favorites');
-  }
-  saveFavs();
-  updateFavCount();
-  // Update all matching fav buttons across the page
-  document.querySelectorAll(`.fav-btn-card`).forEach(b => {
-    const card = b.closest('.snack-card');
-    if(card && card.dataset.id === id) {
-      const isFav = favorites.includes(id);
-      b.textContent = isFav?'❤️':'🤍';
-      isFav ? b.classList.add('is-fav') : b.classList.remove('is-fav');
+  const idx = favs.indexOf(id);
+  if (idx === -1) { favs.push(id); toast('Added to favorites ❤️'); }
+  else            { favs.splice(idx,1); toast('Removed from favorites'); }
+  localStorage.setItem('dw26-favs', JSON.stringify(favs));
+  updateCount();
+  // sync all matching fav buttons
+  document.querySelectorAll('.fav-btn').forEach(b => {
+    const c = b.closest('.card');
+    if (c && c.dataset.id === id) {
+      const on = favs.includes(id);
+      b.textContent = on ? '❤️' : '🤍';
+      on ? b.classList.add('loved') : b.classList.remove('loved');
     }
   });
-  if(document.getElementById('section-fav').classList.contains('visible')) renderFavs();
+  if (document.getElementById('section-fav').classList.contains('on')) renderFavs();
 }
 
-function renderFavs() {
-  const grid = document.getElementById('grid-fav');
-  if(!favorites.length){
-    grid.innerHTML = '<div class="empty-state"><div style="font-size:2.5rem">🤍</div><p>No favorites yet! Tap the 🤍 on any snack to save it here.</p></div>';
-    document.getElementById('tally-fav').textContent = '0 saved';
-    return;
-  }
-  const allSnacks = [
-    ...Object.entries(SNACKS).flatMap(([pid,arr]) => arr.map(s=>({...s,_park:pid}))),
-    ...customSnacks.map(s=>({...s,_park:s.park}))
-  ];
-  const favSnacks = favorites.map(id => allSnacks.find(s=>s.id===id)).filter(Boolean);
-  grid.innerHTML = favSnacks.map((s,i) => makeCard(s, s._park, i+1)).join('');
-  document.getElementById('tally-fav').textContent = favSnacks.length + ' saved';
+function updateCount() {
+  document.getElementById('fcount').textContent = favs.length;
 }
 
-function updateFavCount(){
-  document.getElementById('fav-count').textContent = favorites.length;
-}
-
-// ── PARK NAV ─────────────────────────────────────────────────────────────────
-let activePark = 'all';
-function showPark(id) {
-  activePark = id;
-  document.querySelectorAll('.park-section').forEach(s=>s.classList.remove('visible'));
-  document.querySelectorAll('.park-nav button').forEach(b=>b.classList.remove('active'));
-  if(id==='all'){
-    document.querySelectorAll('.park-section:not(#section-fav)').forEach(s=>s.classList.add('visible'));
-  } else if(id==='fav'){
-    document.getElementById('section-fav').classList.add('visible');
+// ── NAVIGATION ────────────────────────────────────────────────────────────────
+let current = 'all';
+function show(id) {
+  current = id;
+  document.querySelectorAll('.park-sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  if (id==='all') {
+    document.querySelectorAll('.park-sec:not(#section-fav)').forEach(s=>s.classList.add('on'));
+  } else if (id==='fav') {
+    document.getElementById('section-fav').classList.add('on');
     renderFavs();
   } else {
-    document.getElementById('section-'+id).classList.add('visible');
+    document.getElementById('section-'+id).classList.add('on');
   }
   document.getElementById('btn-'+id).classList.add('active');
   clearSearch();
-  window.scrollTo({top: document.querySelector('.container').offsetTop-20, behavior:'smooth'});
+  window.scrollTo({top:document.querySelector('.main').offsetTop-20, behavior:'smooth'});
 }
 
 // ── SEARCH ────────────────────────────────────────────────────────────────────
-function filterSnacks(q) {
-  q = (q||'').toLowerCase().trim();
-  const clearBtn = document.getElementById('search-clear');
-  clearBtn.style.display = q ? 'block' : 'none';
-
-  if(q && activePark !== 'fav'){
-    document.querySelectorAll('.park-section:not(#section-fav)').forEach(s=>s.classList.add('visible'));
+function doSearch(q) {
+  q = q.toLowerCase().trim();
+  document.getElementById('sclear').style.display = q ? 'block' : 'none';
+  if (q && current !== 'fav') {
+    document.querySelectorAll('.park-sec:not(#section-fav)').forEach(s=>s.classList.add('on'));
   }
-
-  document.querySelectorAll('.snack-card').forEach(card=>{
-    const match = !q || card.dataset.name.includes(q) || card.dataset.desc.includes(q) || card.dataset.loc.includes(q);
-    card.classList.toggle('hidden', !match);
+  document.querySelectorAll('.card').forEach(c => {
+    const match = !q || c.dataset.n.includes(q) || c.dataset.d.includes(q) || c.dataset.w.includes(q);
+    c.classList.toggle('gone', !match);
   });
-
-  document.querySelectorAll('.park-section.visible:not(#section-fav)').forEach(section=>{
-    const id = section.id.replace('section-','');
-    const grid = document.getElementById('grid-'+id);
-    if(!grid) return;
-    const visible = [...grid.querySelectorAll('.snack-card:not(.hidden)')];
-    let noRes = grid.querySelector('.no-results');
-    if(q && visible.length===0){
-      if(!noRes){ noRes=document.createElement('div'); noRes.className='no-results'; grid.appendChild(noRes); }
-      noRes.textContent = `No snacks match "${q}" in this park`;
-    } else if(noRes) noRes.remove();
+  document.querySelectorAll('.park-sec.on:not(#section-fav)').forEach(sec => {
+    const pid = sec.id.replace('section-','');
+    const grid = document.getElementById('grid-'+pid);
+    if (!grid) return;
+    const vis = [...grid.querySelectorAll('.card:not(.gone)')];
+    let nr = grid.querySelector('.no-r');
+    if (q && !vis.length) {
+      if (!nr) { nr=document.createElement('div'); nr.className='no-r'; grid.appendChild(nr); }
+      nr.textContent = `No snacks match "${q}" in this park`;
+    } else if (nr) nr.remove();
   });
 }
 
-function clearSearch(){
-  const input = document.getElementById('search');
-  input.value = '';
-  document.getElementById('search-clear').style.display = 'none';
-  document.querySelectorAll('.snack-card').forEach(c=>c.classList.remove('hidden'));
-  document.querySelectorAll('.no-results').forEach(n=>n.remove());
+function clearSearch() {
+  const inp = document.getElementById('search');
+  inp.value = '';
+  document.getElementById('sclear').style.display = 'none';
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('gone'));
+  document.querySelectorAll('.no-r').forEach(n=>n.remove());
 }
 
-// ── MODAL ────────────────────────────────────────────────────────────────────
-function openModal(){ document.getElementById('modal').classList.add('open'); }
-function closeModal(){
-  document.getElementById('modal').classList.remove('open');
-  ['f-name','f-price','f-venue','f-land','f-tip','f-desc','f-img','f-link'].forEach(id=>{
-    const el = document.getElementById(id);
-    if(el) el.value='';
+// ── MODAL ─────────────────────────────────────────────────────────────────────
+function openModal()  { document.getElementById('overlay').classList.add('open'); }
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  ['fn','fe','fpr','fv','fl','ft','fd','fi','flink'].forEach(id => {
+    const el = document.getElementById(id); if(el) el.value='';
   });
-  document.getElementById('f-img-preview').style.display='none';
+  document.getElementById('fprev').style.display='none';
 }
-
-function previewImg(url){
-  const preview = document.getElementById('f-img-preview');
-  if(url){ preview.src=url; preview.style.display='block'; }
-  else preview.style.display='none';
+function prevImg(url) {
+  const p = document.getElementById('fprev');
+  p.src = url; p.style.display = url ? 'block' : 'none';
 }
-
-function submitSnack(){
-  const name = document.getElementById('f-name').value.trim();
-  const park = document.getElementById('f-park').value;
-  const venue = document.getElementById('f-venue').value.trim();
-  const land = document.getElementById('f-land').value.trim();
-  const desc = document.getElementById('f-desc').value.trim();
-  if(!name||!venue||!land||!desc){ showToast('⚠️ Please fill in all required fields'); return; }
-
-  const newSnack = {
-    id: 'custom-'+Date.now(),
-    custom: true,
-    name, park, emoji:'⭐', tag:'Custom', tagClass:'badge-custom',
-    where:{ venue, land, tip: document.getElementById('f-tip').value.trim()||'Added by you!' },
-    desc,
-    price: document.getElementById('f-price').value.trim()||'Price varies',
-    img: document.getElementById('f-img').value.trim()||'',
-    link: document.getElementById('f-link').value.trim()||'https://disneyworld.disney.go.com/dining/',
-  };
-
-  customSnacks.push(newSnack);
-  saveCustom();
-  closeModal();
-  renderPark(park);
-  showToast('✨ Snack added to the guide!');
-
-  // Switch to park view to show it
-  if(activePark==='all'||activePark===park){
-    document.getElementById('section-'+park).classList.add('visible');
-  } else {
-    showPark(park);
-  }
-}
-
-// ── TOAST ────────────────────────────────────────────────────────────────────
-let toastTimer;
-function showToast(msg){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>t.classList.remove('show'), 2200);
-}
-
-// ── CLICK OUTSIDE MODAL ───────────────────────────────────────────────────────
-document.getElementById('modal').addEventListener('click', e=>{
-  if(e.target === document.getElementById('modal')) closeModal();
+document.getElementById('overlay').addEventListener('click', e => {
+  if (e.target===document.getElementById('overlay')) closeModal();
 });
 
-// ── STARS ────────────────────────────────────────────────────────────────────
-const starsEl = document.getElementById('stars');
-for(let i=0;i<70;i++){
+function submitSnack() {
+  const name = document.getElementById('fn').value.trim();
+  const venue = document.getElementById('fv').value.trim();
+  const land  = document.getElementById('fl').value.trim();
+  const desc  = document.getElementById('fd').value.trim();
+  if (!name||!venue||!land||!desc) { toast('⚠️ Please fill in all required fields'); return; }
+  const s = {
+    id:'c'+Date.now(), custom:true,
+    e: document.getElementById('fe').value.trim()||'⭐',
+    name, park: document.getElementById('fp').value,
+    tag:'Custom', tagClass:'badge-custom',
+    w:{ v:venue, l:land, t:document.getElementById('ft').value.trim()||'Added by you!' },
+    d:desc,
+    p: document.getElementById('fpr').value.trim()||'Price varies',
+    img: document.getElementById('fi').value.trim()||'',
+    link: document.getElementById('flink').value.trim()||'https://disneyworld.disney.go.com/dining/',
+  };
+  customs.push(s);
+  localStorage.setItem('dw26-custom', JSON.stringify(customs));
+  closeModal();
+  renderPark(s.park);
+  toast('✨ Snack added!');
+  show(s.park);
+}
+
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+let tt;
+function toast(msg) {
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  clearTimeout(tt); tt=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// ── STARS ─────────────────────────────────────────────────────────────────────
+const se = document.getElementById('stars');
+for (let i=0;i<70;i++) {
   const s=document.createElement('div'); s.className='star';
-  const sz=Math.random()*2.5+.5;
-  s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${1.5+Math.random()*2.5}s;`;
-  starsEl.appendChild(s);
+  const z=Math.random()*2.5+.5;
+  s.style.cssText=`width:${z}px;height:${z}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${1.5+Math.random()*2.5}s;`;
+  se.appendChild(s);
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
